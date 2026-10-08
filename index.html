@@ -23,17 +23,17 @@
                 extend: {
                     colors: {
                         gold: {
-                            400: '#e5c170',
-                            500: '#c5a059',
-                            600: '#a3803c',
-                            700: '#826224',
+                            400: 'var(--gold-400, #e5c170)',
+                            500: 'var(--gold-500, #c5a059)',
+                            600: 'var(--gold-600, #a3803c)',
+                            700: 'var(--gold-700, #826224)',
                         },
                         dark: {
-                            900: '#0a0a0a',
-                            800: '#0f0f0f',
-                            700: '#141414',
-                            600: '#1c1c1c',
-                            500: '#282828',
+                            900: 'var(--bg-900, #0a0a0a)',
+                            800: 'var(--bg-800, #0f0f0f)',
+                            700: 'var(--bg-700, #141414)',
+                            600: 'var(--bg-600, #1c1c1c)',
+                            500: 'var(--bg-500, #282828)',
                         }
                     },
                     fontFamily: {
@@ -45,70 +45,158 @@
         }
     </script>
 
-    <!-- Custom CSS Styles -->
+    <!-- Custom CSS Styles & Dynamic Themes -->
     <style>
+        /* Preset 1: Default Obsidian Gold */
+        :root, body.theme-obsidian {
+            --bg-body: #0a0a0a;
+            --bg-900: #0a0a0a;
+            --bg-800: #0f0f0f;
+            --bg-700: #141414;
+            --bg-600: #1c1c1c;
+            --bg-500: #282828;
+            --text-color: #e0e0e0;
+            --gold-400: #e5c170;
+            --gold-500: #c5a059;
+            --gold-600: #a3803c;
+            --gold-700: #826224;
+            --mesh-bg: none;
+        }
+
+        /* Preset 2: Deep Sapphire & Champagne */
+        body.theme-navy {
+            --bg-body: #070b19;
+            --bg-900: #070b19;
+            --bg-800: #0c1226;
+            --bg-700: #141c38;
+            --bg-600: #1e294a;
+            --bg-500: #2d3b66;
+            --text-color: #e2e8f0;
+            --gold-400: #f3e5ab;
+            --gold-500: #c5a059;
+            --gold-600: #9e7a37;
+            --gold-700: #785a21;
+            --mesh-bg: radial-gradient(ellipse at top, #111a33 0%, #070b19 80%);
+        }
+
+        /* Preset 3: Deep Emerald & Gold */
+        body.theme-emerald {
+            --bg-body: #061412;
+            --bg-900: #061412;
+            --bg-800: #0b201d;
+            --bg-700: #122c29;
+            --bg-600: #1b3e39;
+            --bg-500: #295750;
+            --text-color: #e0e0e0;
+            --gold-400: #e5c170;
+            --gold-500: #d4af37;
+            --gold-600: #a3803c;
+            --gold-700: #826224;
+            --mesh-bg: radial-gradient(circle at top, #0f2b27 0%, #061412 85%);
+        }
+
+        /* Preset 4: Warm Cream & Bronze (Light Theme) */
+        body.theme-light {
+            --bg-body: #faf8f5;
+            --bg-900: #f4efe8;
+            --bg-800: #ffffff;
+            --bg-700: #f0e9df;
+            --bg-600: #e4dad0;
+            --bg-500: #ccc0b2;
+            --text-color: #2b2b2b;
+            --gold-400: #8c6d23;
+            --gold-500: #6e5416;
+            --gold-600: #523e0e;
+            --gold-700: #382907;
+            --mesh-bg: none;
+        }
+
+        /* Preset 5: Dynamic Ambient Mesh Glow */
+        body.theme-mesh {
+            --bg-body: #0a0a0a;
+            --bg-900: #0a0a0a;
+            --bg-800: #0f0f0f;
+            --bg-700: #141414;
+            --bg-600: #1c1c1c;
+            --bg-500: #282828;
+            --text-color: #e0e0e0;
+            --gold-400: #e5c170;
+            --gold-500: #c5a059;
+            --gold-600: #a3803c;
+            --gold-700: #826224;
+            --mesh-bg: radial-gradient(at 10% 20%, rgba(197, 160, 89, 0.12) 0px, transparent 50%),
+                        radial-gradient(at 90% 80%, rgba(197, 160, 89, 0.08) 0px, transparent 50%),
+                        radial-gradient(at 50% 50%, rgba(20, 20, 20, 1) 0px, transparent 100%);
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
+            background-color: var(--bg-body);
+            background-image: var(--mesh-bg);
+            background-attachment: fixed;
+            color: var(--text-color);
             overflow-x: hidden;
-            transition: background-color 0.4s ease;
+            transition: all 0.4s ease;
         }
 
         h1, h2, h3, .brand-font {
             font-family: 'Cinzel', serif;
         }
 
+        /* Dynamic Text Adjustments for Light Mode */
+        body.theme-light .text-white {
+            color: #1a1a1a !important;
+        }
+        body.theme-light .text-gray-300, 
+        body.theme-light .text-gray-400 {
+            color: #4a5568 !important;
+        }
+
         /* Gold Gradient Text */
         .gold-gradient-text {
-            background: linear-gradient(135deg, #f4d06f 0%, #c5a059 50%, #9e7a37 100%);
+            background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 50%, var(--gold-600) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         /* Gold Gradient Button */
         .btn-gold {
-            background: linear-gradient(135deg, #d4af37 0%, #c5a059 50%, #a3803c 100%);
+            background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 50%, var(--gold-600) 100%);
             color: #0a0a0a;
             box-shadow: 0 4px 20px rgba(197, 160, 89, 0.25);
             transition: all 0.3s ease;
         }
 
         .btn-gold:hover {
-            background: linear-gradient(135deg, #e5c170 0%, #d4af37 50%, #b48e42 100%);
             box-shadow: 0 6px 25px rgba(197, 160, 89, 0.4);
             transform: translateY(-2px);
         }
 
-        /* Simulated Mobile & Desktop View Engine Containers */
+        /* View Engine Frame Styles */
         #viewport-wrapper {
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             margin: 0 auto;
             position: relative;
         }
 
-        /* Mobile View Simulated Frame */
         body.mode-mobile #viewport-wrapper {
             max-width: 430px;
             margin: 30px auto;
             border-radius: 40px;
             border: 12px solid #222;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(197, 160, 89, 0.3);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
             overflow: hidden;
-            background-color: #0f0f0f;
         }
 
-        /* Desktop View Forced Frame */
         body.mode-desktop #viewport-wrapper {
             max-width: 1280px;
             margin: 20px auto;
             border-radius: 12px;
-            border: 1px solid #2a2a2a;
+            border: 1px solid var(--bg-500);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
             overflow: hidden;
         }
 
-        /* Auto / Fluid View */
         body.mode-auto #viewport-wrapper {
             max-width: 100%;
             margin: 0;
@@ -117,44 +205,30 @@
             box-shadow: none;
         }
 
-        /* Smooth Card Hover */
         .product-card {
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(197, 160, 89, 0.6);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.6), 0 0 15px rgba(197, 160, 89, 0.15);
+            border-color: var(--gold-500);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4), 0 0 15px rgba(197, 160, 89, 0.15);
         }
 
-        /* Backdrop Blur Glassmorphism */
         .glass-nav {
-            background: rgba(20, 20, 20, 0.85);
+            background: rgba(20, 20, 20, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #282828;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #c5a059;
+        
+        body.theme-light .glass-nav {
+            background: rgba(250, 248, 245, 0.85);
         }
     </style>
 </head>
-<body class="mode-auto min-h-screen flex flex-col justify-between">
+<body class="mode-auto theme-mesh min-h-screen flex flex-col justify-between">
 
-    <!-- View Switcher Bar (Global Floating Control Bar) -->
-    <div id="viewport-wrapper" class="w-full flex-grow flex flex-col bg-dark-800 text-gray-200">
+    <div id="viewport-wrapper" class="w-full flex-grow flex flex-col bg-dark-800 transition-colors duration-500">
 
         <!-- HEADER / NAVIGATION -->
         <header class="sticky top-0 z-50 glass-nav border-b border-dark-500/50 px-4 md:px-8 py-4 transition-all">
@@ -171,21 +245,23 @@
                     </div>
                 </a>
 
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
-                    <a href="#about" class="hover:text-gold-400 transition-colors">About</a>
-                    <a href="#collection" class="hover:text-gold-400 transition-colors">Collection</a>
-                    <a href="#why" class="hover:text-gold-400 transition-colors">Craftsmanship</a>
-                    <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
-                </nav>
+                <!-- LIVE BACKGROUND PREVIEW SELECTOR -->
+                <div class="flex items-center gap-2 bg-dark-600/80 p-1.5 rounded-xl border border-dark-500 shadow-inner">
+                    <span class="text-[10px] uppercase font-bold text-gold-500 px-2 hidden lg:inline-block">
+                        <i class="fa-solid fa-palette mr-1"></i> Theme Preview:
+                    </span>
+                    <select onchange="changeTheme(this.value)" class="bg-dark-700 text-xs text-white font-medium px-3 py-1.5 rounded-lg border border-dark-500 focus:outline-none focus:border-gold-500 cursor-pointer">
+                        <option value="theme-mesh" selected>5. Ambient Mesh Glow</option>
+                        <option value="theme-obsidian">1. Deep Obsidian Charcoal</option>
+                        <option value="theme-navy">2. Sapphire Navy & Gold</option>
+                        <option value="theme-emerald">3. Emerald & Heritage Gold</option>
+                        <option value="theme-light">4. Warm Cream (Light Gallery)</option>
+                    </select>
+                </div>
 
                 <!-- VIEW MODE SWITCHER CONTROL & ACTIONS -->
                 <div class="flex items-center gap-3">
-                    
-                    <!-- View Switcher Dropdown / Toggle -->
                     <div class="relative bg-dark-600/90 p-1 rounded-xl border border-dark-500 flex items-center gap-1 shadow-inner text-xs">
-                        <span class="text-[10px] uppercase font-bold text-gray-400 px-2 hidden sm:inline-block"><i class="fa-solid font-normal text-gold-500 fa-display mr-1"></i> Mode:</span>
-                        
                         <button id="btn-mode-auto" onclick="setDeviceView('auto')" class="view-btn px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all bg-gold-500 text-dark-900 shadow">
                             <i class="fa-solid fa-expand text-xs"></i>
                             <span class="hidden sm:inline">Auto</span>
@@ -202,7 +278,6 @@
                         </button>
                     </div>
 
-                    <!-- CTA Button -->
                     <a href="#collection" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded-lg font-semibold text-xs uppercase tracking-wider items-center gap-2">
                         <span>Shop</span>
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
@@ -212,8 +287,7 @@
         </header>
 
         <!-- HERO SECTION -->
-        <section class="relative min-h-[580px] md:min-h-[680px] flex items-center justify-center overflow-hidden bg-dark-900">
-            <!-- Hero Background Image with Overlay -->
+        <section class="relative min-h-[580px] md:min-h-[680px] flex items-center justify-center overflow-hidden bg-dark-900/60">
             <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1600&auto=format&fit=crop" 
                  alt="TOCTION Premium Leather Bag" 
                  class="absolute inset-0 w-full h-full object-cover object-center opacity-40 scale-105 transition-transform duration-1000 ease-out hover:scale-100">
@@ -247,7 +321,7 @@
         </section>
 
         <!-- ABOUT SECTION -->
-        <section id="about" class="py-20 px-6 md:px-12 bg-dark-800 border-b border-dark-500/40">
+        <section id="about" class="py-20 px-6 md:px-12 bg-dark-800/80 border-b border-dark-500/40">
             <div class="max-w-5xl mx-auto text-center">
                 <h2 class="text-2xl md:text-4xl font-bold text-white tracking-wider mb-6">About <span class="gold-gradient-text">TOCTION</span></h2>
                 <div class="w-16 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mb-8"></div>
@@ -258,7 +332,7 @@
         </section>
 
         <!-- COLLECTION SECTION -->
-        <section id="collection" class="py-20 px-6 md:px-12 bg-dark-900">
+        <section id="collection" class="py-20 px-6 md:px-12 bg-dark-900/60">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
                     <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest block mb-2">Curated Masterpieces</span>
@@ -357,78 +431,6 @@
             </div>
         </section>
 
-        <!-- WHY CHOOSE US SECTION -->
-        <section id="why" class="py-20 px-6 md:px-12 bg-dark-800 border-t border-b border-dark-500/50">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wider">Why Choose <span class="gold-gradient-text">TOCTION</span>?</h2>
-                    <p class="text-gray-400 text-sm mt-2">Engineered without compromise.</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    
-                    <div class="bg-dark-700/60 p-8 rounded-2xl border border-dark-500/60 text-center hover:border-gold-500/50 transition-all">
-                        <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl">
-                            <i class="fa-solid fa-award"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-3">Premium Quality</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Hand-selected military-grade fabrics and top-tier leather accents for unyielding longevity.</p>
-                    </div>
-
-                    <div class="bg-dark-700/60 p-8 rounded-2xl border border-dark-500/60 text-center hover:border-gold-500/50 transition-all">
-                        <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl">
-                            <i class="fa-solid fa-compass-drafting"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-3">Modern Design</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Sleek, minimalist silhouettes tailored specifically for corporate and travel environments.</p>
-                    </div>
-
-                    <div class="bg-dark-700/60 p-8 rounded-2xl border border-dark-500/60 text-center hover:border-gold-500/50 transition-all">
-                        <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-3">Extreme Durability</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Waterproof zips, reinforced double-stitching, and lifetime warranty coverage.</p>
-                    </div>
-
-                    <div class="bg-dark-700/60 p-8 rounded-2xl border border-dark-500/60 text-center hover:border-gold-500/50 transition-all">
-                        <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl">
-                            <i class="fa-solid fa-sliders"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-3">Smart Functionality</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Ergonomic design with intuitive compartmentalization for every device and travel essential.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="py-20 px-6 md:px-12 bg-dark-900">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wider mb-4">Connect With Us</h2>
-                <p class="text-gray-400 text-sm mb-12">Have a question or custom corporate order inquiry? Reach out directly.</p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    
-                    <a href="mailto:info@toction.com" class="w-full sm:w-auto px-8 py-5 rounded-2xl bg-dark-700 border border-dark-500 hover:border-gold-500 flex items-center justify-center gap-4 text-gold-400 font-bold hover:bg-dark-600 transition-all group shadow-lg">
-                        <div class="w-10 h-10 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-envelope text-lg"></i>
-                        </div>
-                        <span>info@toction.com</span>
-                    </a>
-
-                    <a href="https://wa.me/918089576393" target="_blank" class="w-full sm:w-auto px-8 py-5 rounded-2xl bg-dark-700 border border-dark-500 hover:border-gold-500 flex items-center justify-center gap-4 text-gold-400 font-bold hover:bg-dark-600 transition-all group shadow-lg">
-                        <div class="w-10 h-10 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                        </div>
-                        <span>+91 80895 76393</span>
-                    </a>
-
-                </div>
-            </div>
-        </section>
-
         <!-- FOOTER -->
         <footer class="bg-dark-900 border-t border-dark-500/40 py-8 px-6 text-center text-xs text-gray-500">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -436,7 +438,6 @@
                 <div class="flex items-center space-x-6 text-gray-400">
                     <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-gold-400 transition-colors">Warranty</a>
                 </div>
             </div>
         </footer>
@@ -469,6 +470,12 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // BACKGROUND THEME SWITCHER
+        function changeTheme(themeClass) {
+            document.body.className = document.body.className.replace(/\btheme-\S+/g, '');
+            document.body.classList.add(themeClass);
+        }
+
         // VIEW MODE SWITCHER FUNCTIONALITY
         function setDeviceView(mode) {
             const body = document.body;
@@ -476,17 +483,13 @@
             const btnDesktop = document.getElementById('btn-mode-desktop');
             const btnMobile = document.getElementById('btn-mode-mobile');
 
-            // Reset class list on body
             body.classList.remove('mode-auto', 'mode-desktop', 'mode-mobile');
             body.classList.add(`mode-${mode}`);
 
-            // Reset buttons styling
-            const allBtns = [btnAuto, btnDesktop, btnMobile];
-            allBtns.forEach(btn => {
+            [btnAuto, btnDesktop, btnMobile].forEach(btn => {
                 btn.className = "view-btn px-2.5 py-1.5 rounded-lg font-semibold text-gray-400 hover:text-white flex items-center gap-1.5 transition-all";
             });
 
-            // Set active button styling
             let activeBtn = btnAuto;
             if (mode === 'desktop') activeBtn = btnDesktop;
             if (mode === 'mobile') activeBtn = btnMobile;
@@ -525,7 +528,6 @@
             }, 300);
         }
 
-        // Close modal on outside backdrop click
         document.getElementById('product-modal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
