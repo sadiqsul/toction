@@ -222,7 +222,7 @@ h2{
     font-weight: bold;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .contact-link:hover {
@@ -232,6 +232,13 @@ h2{
 .contact-icon {
     width: 22px;
     height: 22px;
+    vertical-align: middle;
+}
+
+.contact-svg {
+    width: 22px;
+    height: 22px;
+    fill: #c5a059;
     vertical-align: middle;
 }
 
@@ -350,7 +357,11 @@ footer{
 
     <p>
         <a href="mailto:info@toction.com" class="contact-link">
-            <img src="email.png" alt="Email" class="contact-icon"> info@toction.com
+            <!-- Professional gold email envelope icon -->
+            <svg class="contact-svg" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-2V6l8 5 8-2v2z"/>
+            </svg>
+            info@toction.com
         </a>
     </p>
     <p>
