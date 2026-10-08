@@ -163,8 +163,14 @@
                     </div>
                 </a>
 
-                <!-- VIEWPORT MODE CONTROLS -->
-                <div class="flex items-center gap-3">
+                <!-- NAV LINKS & VIEWPORT CONTROLS -->
+                <div class="flex items-center gap-4">
+                    <nav class="hidden md:flex items-center gap-6 text-xs uppercase tracking-wider font-semibold text-gray-300">
+                        <a href="#about" class="hover:text-gold-400 transition-colors">About</a>
+                        <a href="#collection" class="hover:text-gold-400 transition-colors">Collection</a>
+                        <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+                    </nav>
+
                     <div class="relative bg-dark-600/90 p-1 rounded-xl border border-dark-500 flex items-center gap-1 shadow-inner text-xs">
                         <button id="btn-mode-auto" onclick="setDeviceView('auto')" class="view-btn px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all bg-gold-500 text-dark-900 shadow">
                             <i class="fa-solid fa-expand text-xs"></i>
@@ -217,8 +223,8 @@
                         <span>Explore Collection</span>
                         <i class="fa-solid fa-bag-shopping"></i>
                     </a>
-                    <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-sm tracking-wider text-gray-300 hover:text-white bg-dark-600/80 hover:bg-dark-600 border border-dark-500 text-center transition-all">
-                        Our Story
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-sm tracking-wider text-gray-300 hover:text-white bg-dark-600/80 hover:bg-dark-600 border border-dark-500 text-center transition-all">
+                        Contact Us
                     </a>
                 </div>
             </div>
@@ -335,13 +341,76 @@
             </div>
         </section>
 
+        <!-- CONTACT US SECTION -->
+        <section id="contact" class="py-20 px-6 md:px-12 bg-dark-800/90 border-t border-dark-500/40">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest block mb-2">Get In Touch</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white tracking-wider">Contact Us</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <!-- Contact Cards (WhatsApp & Email) -->
+                    <div class="space-y-6">
+                        <div class="p-6 bg-dark-700 rounded-2xl border border-dark-500/80 flex items-center gap-5 hover:border-gold-500/50 transition-all">
+                            <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">WhatsApp Us</h3>
+                                <p class="text-gray-400 text-xs mb-2">Instant support for inquiries & custom orders</p>
+                                <a href="https://wa.me/1234567890?text=Hello%20TOCTION%20Team,%20I%20have%20an%20inquiry" target="_blank" class="text-gold-400 hover:text-gold-500 text-sm font-semibold inline-flex items-center gap-1">
+                                    Chat on WhatsApp <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-dark-700 rounded-2xl border border-dark-500/80 flex items-center gap-5 hover:border-gold-500/50 transition-all">
+                            <div class="w-14 h-14 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl shrink-0">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">Email Us</h3>
+                                <p class="text-gray-400 text-xs mb-2">We typically reply within 24 hours</p>
+                                <a href="mailto:support@toction.com" class="text-gold-400 hover:text-gold-500 text-sm font-semibold inline-flex items-center gap-1">
+                                    support@toction.com <i class="fa-solid fa-paper-plane text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Message Form -->
+                    <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will contact you shortly.');" class="bg-dark-700 p-8 rounded-2xl border border-dark-500/80 space-y-4">
+                        <h3 class="text-xl font-bold text-white mb-4">Send a Direct Message</h3>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Your Name</label>
+                            <input type="text" required placeholder="John Doe" class="w-full bg-dark-600 border border-dark-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Email Address</label>
+                            <input type="email" required placeholder="john@example.com" class="w-full bg-dark-600 border border-dark-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Message</label>
+                            <textarea rows="4" required placeholder="How can we assist you?" class="w-full bg-dark-600 border border-dark-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors"></textarea>
+                        </div>
+                        <button type="submit" class="btn-gold w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <!-- FOOTER -->
         <footer class="bg-dark-900 border-t border-dark-500/40 py-8 px-6 text-center text-xs text-gray-400">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p>&copy; 2026 TOCTION. All Rights Reserved.</p>
                 <div class="flex items-center space-x-6 text-gray-400">
-                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+                    <a href="#about" class="hover:text-gold-400 transition-colors">About</a>
+                    <a href="#collection" class="hover:text-gold-400 transition-colors">Collection</a>
+                    <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
                 </div>
             </div>
         </footer>
