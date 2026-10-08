@@ -53,7 +53,7 @@ nav a:hover{
 .hero{
     position: relative;
     width: 100%;
-    height: 80vh; /* Scales dynamically based on screen size to fill the full banner width */
+    height: 80vh;
     min-height: 500px;
     display: flex;
     align-items: center;
@@ -69,8 +69,8 @@ nav a:hover{
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Fills the entire banner space edge-to-edge */
-    object-position: center top; /* Keeps the top handles and right-side banner in view */
+    object-fit: cover;
+    object-position: center top;
     z-index: 1;
 }
 
@@ -80,7 +80,7 @@ nav a:hover{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.25); /* Subtle overlay for contrast */
+    background: rgba(0, 0, 0, 0.25);
     z-index: 2;
 }
 
@@ -89,7 +89,7 @@ nav a:hover{
     z-index: 3;
     color: white;
     padding: 0 20px;
-    margin-top: 480px; /* Pushes the button even further down */
+    margin-top: 480px; /* Perfectly positioned below the logo badge */
 }
 
 .btn{
@@ -208,18 +208,31 @@ h2{
 
 .contact p{
     font-size: 18px;
-    margin: 10px 0;
+    margin: 15px 0;
     color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.contact a {
+.whatsapp-link {
     color: #c5a059;
     text-decoration: none;
     font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.contact a:hover {
+.whatsapp-link:hover {
     text-decoration: underline;
+}
+
+.whatsapp-icon {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
 }
 
 footer{
@@ -336,7 +349,11 @@ footer{
     <h2>Contact Us</h2>
 
     <p>Email: info@toction.com</p>
-    <p>WhatsApp: <a href="https://wa.me/918089576393" target="_blank">+91 80895 76393</a></p>
+    <p>
+        <a href="https://wa.me/918089576393" target="_blank" class="whatsapp-link">
+            <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon"> +91 80895 76393
+        </a>
+    </p>
 
 </section>
 
