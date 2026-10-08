@@ -53,7 +53,8 @@ nav a:hover{
 .hero{
     position: relative;
     width: 100%;
-    height: 550px;
+    height: 80vh; /* Scales dynamically based on screen size to fill the full banner width */
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,8 +69,8 @@ nav a:hover{
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Shows the full image without cutting off the handles */
-    object-position: center; 
+    object-fit: cover; /* Fills the entire banner space edge-to-edge */
+    object-position: center top; /* Keeps the top handles and right-side banner in view */
     z-index: 1;
 }
 
@@ -79,7 +80,7 @@ nav a:hover{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2); /* Lighter overlay so the background banner is clear */
+    background: rgba(0, 0, 0, 0.25); /* Subtle overlay for contrast */
     z-index: 2;
 }
 
@@ -88,13 +89,7 @@ nav a:hover{
     z-index: 3;
     color: white;
     padding: 0 20px;
-    margin-top: 350px; /* Pushes the button down to the bottom area so it doesn't cover the bag */
-}
-
-.hero-content h1{
-    font-size: 65px;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
+    margin-top: 320px; /* Positions your collection button neatly at the bottom */
 }
 
 .btn{
@@ -242,7 +237,7 @@ footer{
 
 <header>
     <div class="logo">
-        <img src="logo.jpg" alt="TOCTION Logo">
+        <img src="logo.png" alt="TOCTION Logo">
     </div>
 
     <nav>
@@ -256,7 +251,6 @@ footer{
     <img src="hero page.jpg" alt="TOCTION Hero Bag" class="hero-img">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1>TOCTION</h1>
         <a href="#collection" class="btn">View Collection</a>
     </div>
 </section>
