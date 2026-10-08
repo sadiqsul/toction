@@ -1,534 +1,664 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOCTION | Premium Luxury Bags</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOCTION | Premium Bags</title>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   COLOR PALETTE & RESETS (MATCHING MOCKUP IMAGE)
+   ========================================================= */
+:root {
+  --bg-deep: #0c0d0e;          /* Dark luxury charcoal background */
+  --bg-surface: #141517;       /* Dark card / panel background */
+  --bg-surface-elevated: #1a1c1e;
+  --gold-primary: #c29b53;     /* Muted bronze / gold accent */
+  --gold-bright: #e6c585;      /* High contrast metallic text */
+  --gold-glow: rgba(194, 155, 83, 0.2);
+  --border-subtle: #24262a;
+  --text-main: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-white: #ffffff;
+}
 
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            400: '#e5c170',
-                            500: '#c5a059',
-                            600: '#a3803c',
-                            700: '#826224',
-                        },
-                        dark: {
-                            900: '#0a0a0a',
-                            800: '#0f0f0f',
-                            700: '#141414',
-                            600: '#1c1c1c',
-                            500: '#282828',
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <!-- Custom CSS Styles -->
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-            overflow-x: hidden;
-            transition: background-color 0.4s ease;
-        }
+html {
+  scroll-behavior: smooth;
+}
 
-        h1, h2, h3, .brand-font {
-            font-family: 'Cinzel', serif;
-        }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-        /* Gold Gradient Text */
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #f4d06f 0%, #c5a059 50%, #9e7a37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* Base Device Frame Container */
+#viewport-frame {
+  width: 100%;
+  margin: 0 auto;
+  transition: max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-radius 0.5s ease;
+  background-color: var(--bg-deep);
+  position: relative;
+}
 
-        /* Gold Gradient Button */
-        .btn-gold {
-            background: linear-gradient(135deg, #d4af37 0%, #c5a059 50%, #a3803c 100%);
-            color: #0a0a0a;
-            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.25);
-            transition: all 0.3s ease;
-        }
+/* Mobile Simulation Mode */
+body.mode-mobile #viewport-frame {
+  max-width: 430px;
+  margin: 30px auto;
+  border: 12px solid #222;
+  border-radius: 44px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
 
-        .btn-gold:hover {
-            background: linear-gradient(135deg, #e5c170 0%, #d4af37 50%, #b48e42 100%);
-            box-shadow: 0 6px 25px rgba(197, 160, 89, 0.4);
-            transform: translateY(-2px);
-        }
+body.mode-mobile header {
+  padding: 15px 20px;
+}
 
-        /* Simulated Mobile & Desktop View Engine Containers */
-        #viewport-wrapper {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            margin: 0 auto;
-            position: relative;
-        }
+body.mode-mobile .nav-links {
+  display: none; /* Hide standard nav on simulated mobile */
+}
 
-        /* Mobile View Simulated Frame */
-        body.mode-mobile #viewport-wrapper {
-            max-width: 430px;
-            margin: 30px auto;
-            border-radius: 40px;
-            border: 12px solid #222;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(197, 160, 89, 0.3);
-            overflow: hidden;
-            background-color: #0f0f0f;
-        }
+/* =========================================================
+   HEADER & NAVIGATION
+   ========================================================= */
+header {
+  background: rgba(12, 13, 14, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 15px 5%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        /* Desktop View Forced Frame */
-        body.mode-desktop #viewport-wrapper {
-            max-width: 1280px;
-            margin: 20px auto;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            overflow: hidden;
-        }
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
 
-        /* Auto / Fluid View */
-        body.mode-auto #viewport-wrapper {
-            max-width: 100%;
-            margin: 0;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-        }
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
 
-        /* Smooth Card Hover */
-        .product-card {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-        }
+.nav-links a:hover {
+  color: var(--gold-bright);
+}
 
-        .product-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(197, 160, 89, 0.6);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.6), 0 0 15px rgba(197, 160, 89, 0.15);
-        }
+/* Logo Section */
+.brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
 
-        /* Backdrop Blur Glassmorphism */
-        .glass-nav {
-            background: rgba(20, 20, 20, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
+.brand-logo svg {
+  width: 42px;
+  height: 42px;
+  fill: var(--gold-primary);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #282828;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #c5a059;
-        }
-    </style>
+.brand-logo span {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-bright);
+  font-size: 15px;
+  letter-spacing: 4px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Top Device Mode Selector Toggle */
+.device-selector-top {
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.device-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+
+.device-btn.active, .device-btn:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--gold-bright);
+  border: 1px solid rgba(194, 155, 83, 0.3);
+}
+
+.device-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+.hero {
+  position: relative;
+  height: 75vh;
+  min-height: 520px;
+  background: radial-gradient(circle at center, #1e1b18 0%, #0c0d0e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  filter: contrast(1.1) brightness(0.8);
+}
+
+/* Center Glass Overlay Card (Matching Mockup) */
+.hero-overlay-card {
+  position: relative;
+  z-index: 10;
+  background: rgba(20, 21, 23, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(194, 155, 83, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  padding: 35px 45px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+}
+
+.hero-overlay-card h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-bright);
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.device-toggle-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.hero-toggle-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  padding: 16px 12px;
+  border-radius: 10px;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.hero-toggle-btn:hover, .hero-toggle-btn.active {
+  border-color: var(--gold-primary);
+  background: rgba(194, 155, 83, 0.1);
+  color: var(--gold-bright);
+}
+
+.hero-toggle-btn svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.view-device-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.view-device-label svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* =========================================================
+   CONTENT SECTIONS & TYPOGRAPHY
+   ========================================================= */
+section {
+  padding: 80px 8%;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 38px;
+  color: var(--gold-bright);
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--gold-primary);
+  margin: 15px auto 0;
+  opacity: 0.6;
+}
+
+/* About Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-text p {
+  color: var(--text-main);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+/* Collection Grid */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(194, 155, 83, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px var(--gold-glow);
+}
+
+.product-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: #111214;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.product-img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img-wrapper img {
+  transform: scale(1.06);
+}
+
+.product-info {
+  padding: 22px;
+  background: var(--bg-surface);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-info h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--text-white);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.product-info p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.product-action {
+  display: inline-block;
+  color: var(--gold-bright);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.product-action:hover {
+  color: #ffffff;
+}
+
+/* Contact Section */
+.contact-section {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  padding: 14px 28px;
+  border-radius: 8px;
+  color: var(--gold-bright);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+  background: rgba(194, 155, 83, 0.12);
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+.contact-button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
+  font-size: 13px;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+    padding: 12px 4%;
+  }
+  .nav-links {
+    display: none;
+  }
+  .section-title {
+    font-size: 30px;
+  }
+  section {
+    padding: 50px 5%;
+  }
+}
+</style>
 </head>
-<body class="mode-auto min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- View Switcher Bar (Global Floating Control Bar) -->
-    <div id="viewport-wrapper" class="w-full flex-grow flex flex-col bg-dark-800 text-gray-200">
+<div id="viewport-frame">
 
-        <!-- HEADER / NAVIGATION -->
-        <header class="sticky top-0 z-50 glass-nav border-b border-dark-500/50 px-4 md:px-8 py-4 transition-all">
-            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-                
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center shadow-lg group-hover:rotate-3 transition-transform">
-                        <span class="font-serif text-dark-900 font-extrabold text-xl tracking-wider">T</span>
-                    </div>
-                    <div>
-                        <span class="brand-font text-2xl font-bold tracking-widest text-white block leading-none">TOCTION</span>
-                        <span class="text-[10px] tracking-[0.25em] text-gold-500 font-semibold uppercase block mt-1">Luxury Carry</span>
-                    </div>
-                </a>
-
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
-                    <a href="#about" class="hover:text-gold-400 transition-colors">About</a>
-                    <a href="#collection" class="hover:text-gold-400 transition-colors">Collection</a>
-                    <a href="#why" class="hover:text-gold-400 transition-colors">Craftsmanship</a>
-                    <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
-                </nav>
-
-                <!-- VIEW MODE SWITCHER CONTROL & ACTIONS -->
-                <div class="flex items-center gap-3">
-                    
-                    <!-- View Switcher Dropdown / Toggle -->
-                    <div class="relative bg-dark-600/90 p-1 rounded-xl border border-dark-500 flex items-center gap-1 shadow-inner text-xs">
-                        <span class="text-[10px] uppercase font-bold text-gray-400 px-2 hidden sm:inline-block"><i class="fa-solid font-normal text-gold-500 fa-display mr-1"></i> Mode:</span>
-                        
-                        <button id="btn-mode-auto" onclick="setDeviceView('auto')" class="view-btn px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all bg-gold-500 text-dark-900 shadow">
-                            <i class="fa-solid fa-expand text-xs"></i>
-                            <span class="hidden sm:inline">Auto</span>
-                        </button>
-                        
-                        <button id="btn-mode-desktop" onclick="setDeviceView('desktop')" class="view-btn px-2.5 py-1.5 rounded-lg font-semibold text-gray-400 hover:text-white flex items-center gap-1.5 transition-all">
-                            <i class="fa-solid fa-desktop text-xs"></i>
-                            <span class="hidden sm:inline">Desktop</span>
-                        </button>
-                        
-                        <button id="btn-mode-mobile" onclick="setDeviceView('mobile')" class="view-btn px-2.5 py-1.5 rounded-lg font-semibold text-gray-400 hover:text-white flex items-center gap-1.5 transition-all">
-                            <i class="fa-solid fa-mobile-screen-button text-xs"></i>
-                            <span class="hidden sm:inline">Mobile</span>
-                        </button>
-                    </div>
-
-                    <!-- CTA Button -->
-                    <a href="#collection" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded-lg font-semibold text-xs uppercase tracking-wider items-center gap-2">
-                        <span>Shop</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <!-- HERO SECTION -->
-        <section class="relative min-h-[580px] md:min-h-[680px] flex items-center justify-center overflow-hidden bg-dark-900">
-            <!-- Hero Background Image with Overlay -->
-            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1600&auto=format&fit=crop" 
-                 alt="TOCTION Premium Leather Bag" 
-                 class="absolute inset-0 w-full h-full object-cover object-center opacity-40 scale-105 transition-transform duration-1000 ease-out hover:scale-100">
-            
-            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent"></div>
-            
-            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-semibold uppercase tracking-widest mb-6">
-                    Handcrafted Perfection &bull; 2026 Edition
-                </span>
-                
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-                    Elegance Re-defined. <br/>
-                    <span class="gold-gradient-text">Built for Ambition.</span>
-                </h1>
-                
-                <p class="text-gray-300 text-base md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Designed for modern executives, travelers, and style connoisseurs. High-grade materials fused with uncompromising functionality.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#collection" class="btn-gold px-8 py-4 rounded-xl font-bold text-sm tracking-wider uppercase w-full sm:w-auto text-center flex items-center justify-center gap-3">
-                        <span>Explore Collection</span>
-                        <i class="fa-solid fa-bag-shopping"></i>
-                    </a>
-                    <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-sm tracking-wider text-gray-300 hover:text-white bg-dark-600/80 hover:bg-dark-600 border border-dark-500 text-center transition-all">
-                        Our Story
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT SECTION -->
-        <section id="about" class="py-20 px-6 md:px-12 bg-dark-800 border-b border-dark-500/40">
-            <div class="max-w-5xl mx-auto text-center">
-                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-wider mb-6">About <span class="gold-gradient-text">TOCTION</span></h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mb-8"></div>
-                <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-3xl mx-auto font-light">
-                    TOCTION represents the pinnacle of luxury carrying gear. Each piece is crafted using premium water-resistant textiles, genuine full-grain accents, and ultra-durable hardware. Engineered specifically for dynamic professionals, global travelers, and daily commuters who settle for nothing less than extraordinary.
-                </p>
-            </div>
-        </section>
-
-        <!-- COLLECTION SECTION -->
-        <section id="collection" class="py-20 px-6 md:px-12 bg-dark-900">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest block mb-2">Curated Masterpieces</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-white tracking-wider">Our Signature Collection</h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Product Card 1 -->
-                    <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
-                        <div class="relative h-72 bg-dark-600/50 overflow-hidden flex items-center justify-center p-6">
-                            <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                Flagship
-                            </span>
-                            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop" 
-                                 alt="Executive Laptop Briefcase" 
-                                 class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-2">
-                                    <h3 class="text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Executive Laptop Bag</h3>
-                                    <span class="text-gold-400 font-bold">$249</span>
-                                </div>
-                                <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                                    Designed for modern professionals with padded 16-inch laptop sleeves, RFID blocking pockets, and sleek water-resistant canvas.
-                                </p>
-                            </div>
-                            <button onclick="openModal('Executive Laptop Bag', 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop', 'Designed for modern executives featuring impact-resistant cushioning, dedicated compartments for tech peripherals, magnetic quick-access pockets, and premium YKK zippers.', '$249')" 
-                                    class="w-full py-3 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200">
-                                <span>Quick View Details</span>
-                                <i class="fa-solid fa-circle-info"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 2 -->
-                    <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
-                        <div class="relative h-72 bg-dark-600/50 overflow-hidden flex items-center justify-center p-6">
-                            <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                Best Seller
-                            </span>
-                            <img src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?q=80&w=800&auto=format&fit=crop" 
-                                 alt="Travel Backpack" 
-                                 class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-2">
-                                    <h3 class="text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Travel Backpack</h3>
-                                    <span class="text-gold-400 font-bold">$299</span>
-                                </div>
-                                <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                                    Smart expandable storage with ergonomic air-mesh shoulder straps and integrated USB pass-through charging.
-                                </p>
-                            </div>
-                            <button onclick="openModal('Travel Backpack', 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?q=80&w=800&auto=format&fit=crop', 'Built for global jetsetters. Expands by 35% for weekend trips, features luggage pass-through straps, secret anti-theft back pockets, and weatherproof construction.', '$299')" 
-                                    class="w-full py-3 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200">
-                                <span>Quick View Details</span>
-                                <i class="fa-solid fa-circle-info"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 3 -->
-                    <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
-                        <div class="relative h-72 bg-dark-600/50 overflow-hidden flex items-center justify-center p-6">
-                            <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                New Arrival
-                            </span>
-                            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop" 
-                                 alt="Business Collection Carryall" 
-                                 class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start mb-2">
-                                    <h3 class="text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Business Duffle</h3>
-                                    <span class="text-gold-400 font-bold">$320</span>
-                                </div>
-                                <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                                    Versatile weekender duffle combining full-grain leather trim with sleek tactical aesthetic.
-                                </p>
-                            </div>
-                            <button onclick="openModal('Business Duffle', 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop', 'The ultimate companion for business trips and luxury weekend getaways. Includes a ventilated shoe compartment, garment organization sleeve, and detachable padded strap.', '$320')" 
-                                    class="w-full py-3 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200">
-                                <span>Quick View Details</span>
-                                <i class="fa-solid fa-circle-info"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- WHY CHOOSE US SECTION -->
-        <section id="why" class="py-20 px-6 md:px-12 bg-dark-800 border-t border-b border-dark-500/50">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wider">Why Choose <span class="gold-gradient-text">TOCTION</span>?</h2>
-                    <p class="text-gray-400 text-sm mt-2">Engineered without compromise.</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    
-                    <div class="bg-dark-700/60 p-8 rounded-2xl border border-dark-500/60 text-center hover:border-gold-500/50 transition-all">
-                        <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl">
-                            <i class="fa-solid fa-award"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-3">Premium Quality</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Hand-selected military-grade fabrics and top-tier leather accents for unyielding longevity.</p>
-                    </div>
-
-                    <div class="bg-dark-700/60 p-8 rounded-2xl border border-dark-500/60 text-center hover:border-gold-500/50 transition-all">
-                        <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl">
-                            <i class="fa-solid fa-compass-drafting"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-3">Modern Design</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Sleek, minimalist silhouettes tailored specifically for corporate and travel environments.</p>
-                    </div>
-
-                    <div class="bg-dark-700/60 p-8 rounded-2xl border border-dark-500/60 text-center hover:border-gold-500/50 transition-all">
-                        <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-3">Extreme Durability</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Waterproof zips, reinforced double-stitching, and lifetime warranty coverage.</p>
-                    </div>
-
-                    <div class="bg-dark-700/60 p-8 rounded-2xl border border-dark-500/60 text-center hover:border-gold-500/50 transition-all">
-                        <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl">
-                            <i class="fa-solid fa-sliders"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-3">Smart Functionality</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Ergonomic design with intuitive compartmentalization for every device and travel essential.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="py-20 px-6 md:px-12 bg-dark-900">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wider mb-4">Connect With Us</h2>
-                <p class="text-gray-400 text-sm mb-12">Have a question or custom corporate order inquiry? Reach out directly.</p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    
-                    <a href="mailto:info@toction.com" class="w-full sm:w-auto px-8 py-5 rounded-2xl bg-dark-700 border border-dark-500 hover:border-gold-500 flex items-center justify-center gap-4 text-gold-400 font-bold hover:bg-dark-600 transition-all group shadow-lg">
-                        <div class="w-10 h-10 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-envelope text-lg"></i>
-                        </div>
-                        <span>info@toction.com</span>
-                    </a>
-
-                    <a href="https://wa.me/918089576393" target="_blank" class="w-full sm:w-auto px-8 py-5 rounded-2xl bg-dark-700 border border-dark-500 hover:border-gold-500 flex items-center justify-center gap-4 text-gold-400 font-bold hover:bg-dark-600 transition-all group shadow-lg">
-                        <div class="w-10 h-10 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                        </div>
-                        <span>+91 80895 76393</span>
-                    </a>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="bg-dark-900 border-t border-dark-500/40 py-8 px-6 text-center text-xs text-gray-500">
-            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p>&copy; 2026 TOCTION Luxury Carry. All Rights Reserved.</p>
-                <div class="flex items-center space-x-6 text-gray-400">
-                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-gold-400 transition-colors">Warranty</a>
-                </div>
-            </div>
-        </footer>
-
+  <!-- HEADER -->
+  <header>
+    <div class="nav-left">
+      <nav class="nav-links">
+        <a href="#about">Home</a>
+        <a href="#about">About us</a>
+        <a href="#collection">Book</a>
+      </nav>
     </div>
 
-    <!-- PRODUCT QUICK VIEW MODAL -->
-    <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
-        <div class="bg-dark-800 border border-dark-500 rounded-3xl max-w-2xl w-full p-6 md:p-8 relative shadow-2xl scale-95 transition-transform duration-300" id="modal-container">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-600 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            
-            <div class="flex flex-col md:flex-row gap-6 items-center">
-                <img id="modal-img" src="" alt="Product Detail" class="w-full md:w-1/2 h-64 object-cover rounded-2xl border border-dark-500">
-                <div class="w-full md:w-1/2 flex flex-col justify-between">
-                    <div>
-                        <span id="modal-price" class="text-gold-400 font-bold text-xl block mb-1"></span>
-                        <h3 id="modal-title" class="text-2xl font-bold text-white mb-3"></h3>
-                        <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-6"></p>
-                    </div>
-                    <button onclick="closeModal(); alert('Order placed! Representative will connect via WhatsApp/Email.');" class="btn-gold py-3.5 px-6 rounded-xl font-bold text-xs uppercase tracking-wider w-full flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span>Order Now</span>
-                    </button>
-                </div>
-            </div>
+    <!-- CENTER LOGO -->
+    <a href="#" class="brand-logo">
+      <svg viewBox="0 0 100 100">
+        <path d="M50,12 C28,12 18,28 18,48 C18,68 28,84 50,84 C56,84 62,82 66,78 L66,68 C62,72 57,74 50,74 C34,74 28,62 28,48 C28,34 34,22 50,22 C57,22 62,24 66,28 L66,18 C62,14 56,12 50,12 Z" />
+        <path d="M43,26 L78,26 L78,34 L64,34 L64,74 L78,74 L78,82 L43,82 L43,74 L54,74 L54,34 L43,34 Z" />
+        <path d="M22,18 C30,10 45,6 68,6 C82,6 90,12 90,12 L84,18 C84,18 78,13 68,13 C48,13 32,16 26,22 Z" />
+      </svg>
+      <span>TOCTION</span>
+    </a>
+
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- TOP VIEW SWITCHER TOGGLE -->
+      <div class="device-selector-top">
+        <button class="device-btn active" onclick="setDeviceMode('desktop')" id="btn-top-desktop" title="Desktop View">
+          <svg viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+          <span class="btn-label">Desktop View</span>
+        </button>
+        <button class="device-btn" onclick="setDeviceMode('mobile')" id="btn-top-mobile" title="Mobile View">
+          <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH OVERLAY SELECTOR -->
+  <section class="hero">
+    <!-- Dark Executive Leather Bag Background -->
+    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1600&auto=format&fit=crop" alt="TOCTION Luxury Briefcase" class="hero-bg-image">
+
+    <div class="hero-overlay-card">
+      <h1>Built for What's Next</h1>
+
+      <div class="device-toggle-group">
+        <button class="hero-toggle-btn active" onclick="setDeviceMode('desktop')" id="btn-hero-desktop">
+          <svg viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+          Desktop
+        </button>
+        <button class="hero-toggle-btn" onclick="setDeviceMode('mobile')" id="btn-hero-mobile">
+          <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+          Mobile
+        </button>
+      </div>
+
+      <div class="view-device-label">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        <span>View as Device</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2 class="section-title">About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          TOCTION is an executive luxury brand crafting high-performance, durable, and refined carry gear for modern leaders and global travelers. 
+        </p>
+        <p>
+          Engineered with precision leatherwork, water-resistant fabrics, and smart compartmentalization, every bag balances elegant aesthetics with modern functionality.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION SECTION -->
+  <section id="collection">
+    <h2 class="section-title">Collection</h2>
+
+    <div class="collection-grid">
+      <!-- Card 1 -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop" alt="Executive Laptop Briefcase">
         </div>
+        <div class="product-info">
+          <div>
+            <h3>Executive Laptop Briefcase</h3>
+            <p>Full-grain leather briefcase with padded 16" laptop sleeve and trolley strap.</p>
+          </div>
+          <a href="#contact" class="product-action">Inquire Details →</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?q=80&w=800&auto=format&fit=crop" alt="Urban Commuter Backpack">
+        </div>
+        <div class="product-info">
+          <div>
+            <h3>Urban Commuter Backpack</h3>
+            <p>Sleek matte-black waterproof backpack with ergonomic lumbar support.</p>
+          </div>
+          <a href="#contact" class="product-action">Inquire Details →</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop" alt="Weekender Travel Tote">
+        </div>
+        <div class="product-info">
+          <div>
+            <h3>Weekender Travel Tote</h3>
+            <p>Spacious weekender bag crafted with reinforced brass hardware and dedicated shoe vault.</p>
+          </div>
+          <a href="#contact" class="product-action">Inquire Details →</a>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // VIEW MODE SWITCHER FUNCTIONALITY
-        function setDeviceView(mode) {
-            const body = document.body;
-            const btnAuto = document.getElementById('btn-mode-auto');
-            const btnDesktop = document.getElementById('btn-mode-desktop');
-            const btnMobile = document.getElementById('btn-mode-mobile');
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section">
+    <h2 class="section-title">Contact Us</h2>
+    <p style="color: var(--text-muted); font-size: 15px;">Connect with our concierge team for custom corporate orders or inquiries.</p>
 
-            // Reset class list on body
-            body.classList.remove('mode-auto', 'mode-desktop', 'mode-mobile');
-            body.classList.add(`mode-${mode}`);
+    <div class="contact-links">
+      <a href="mailto:info@toction.com" class="contact-button">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-2V6l8 5 8-2v2z"/></svg>
+        info@toction.com
+      </a>
+      <a href="https://wa.me/918089576393" target="_blank" class="contact-button">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+        +91 80895 76393
+      </a>
+    </div>
+  </section>
 
-            // Reset buttons styling
-            const allBtns = [btnAuto, btnDesktop, btnMobile];
-            allBtns.forEach(btn => {
-                btn.className = "view-btn px-2.5 py-1.5 rounded-lg font-semibold text-gray-400 hover:text-white flex items-center gap-1.5 transition-all";
-            });
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 TOCTION. All Rights Reserved.</p>
+  </footer>
 
-            // Set active button styling
-            let activeBtn = btnAuto;
-            if (mode === 'desktop') activeBtn = btnDesktop;
-            if (mode === 'mobile') activeBtn = btnMobile;
+</div>
 
-            activeBtn.className = "view-btn px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all bg-gold-500 text-dark-900 shadow";
-        }
+<!-- JAVASCRIPT FOR VIEW MODE SWITCHING -->
+<script>
+function setDeviceMode(mode) {
+  const body = document.body;
+  const topDeskBtn = document.getElementById('btn-top-desktop');
+  const topMobBtn = document.getElementById('btn-top-mobile');
+  const heroDeskBtn = document.getElementById('btn-hero-desktop');
+  const heroMobBtn = document.getElementById('btn-hero-mobile');
 
-        // MODAL INTERACTION LOGIC
-        function openModal(title, image, desc, price) {
-            const modal = document.getElementById('product-modal');
-            const container = document.getElementById('modal-container');
-            
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-img').src = image;
-            document.getElementById('modal-desc').innerText = desc;
-            document.getElementById('modal-price').innerText = price;
+  if (mode === 'mobile') {
+    body.classList.add('mode-mobile');
+    
+    // Update active states
+    topDeskBtn.classList.remove('active');
+    topMobBtn.classList.add('active');
+    heroDeskBtn.classList.remove('active');
+    heroMobBtn.classList.add('active');
+  } else {
+    body.classList.remove('mode-mobile');
+    
+    // Update active states
+    topDeskBtn.classList.add('active');
+    topMobBtn.classList.remove('active');
+    heroDeskBtn.classList.add('active');
+    heroMobBtn.classList.remove('active');
+  }
+}
+</script>
 
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                container.classList.remove('scale-95');
-                container.classList.add('scale-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('product-modal');
-            const container = document.getElementById('modal-container');
-
-            modal.classList.add('opacity-0');
-            container.classList.remove('scale-100');
-            container.classList.add('scale-95');
-
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        // Close modal on outside backdrop click
-        document.getElementById('product-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-    </script>
 </body>
 </html>
