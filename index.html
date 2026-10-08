@@ -147,13 +147,15 @@ h2{
 }
 
 /* Updated image container to match the clean seamless look */
-.card img{
+.card img {
     width: 100%;
     height: 260px;
     object-fit: contain;
-    background-color: transparent; /* Removed white box background */
+    background-color: transparent; 
     padding: 20px;
     display: block;
+    mix-blend-mode: multiply; /* This removes/blends out the white background */
+    filter: contrast(1.05);   /* Optional: boosts contrast if edges look faint */
 }
 
 .card-content{
