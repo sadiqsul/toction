@@ -148,9 +148,11 @@ h2{
 }
 
 .card img{
-    width:100%;
-    height:260px;
-    object-fit: cover; /* Fits the image smoothly across the full card width */
+    width: 100%;
+    height: 260px;
+    object-fit: contain; /* Shows full product view without cropping */
+    background-color: #141414; /* Matches dark theme cleanly */
+    padding: 15px;
     display: block;
 }
 
