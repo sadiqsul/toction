@@ -13,119 +13,190 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height:1.6;
-    color:#333;
+    background-color: #0f0f0f; /* Premium dark background */
+    color: #e0e0e0; /* Soft off-white text for readability */
 }
 
 header{
-    background:#111;
+    background:#141414;
+    border-bottom: 1px solid #222;
     color:white;
-    padding:20px;
+    padding:20px 5%;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo{
     font-size:30px;
     font-weight:bold;
-    letter-spacing:3px;
+    letter-spacing:4px;
+    color: #f4d06f; /* Elegant gold accent */
 }
 
 nav a{
-    color:white;
+    color:#ccc;
     text-decoration:none;
-    margin-left:20px;
+    margin-left:25px;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+nav a:hover{
+    color: #f4d06f;
 }
 
 .hero{
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero page.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero page.jpg');
     background-size: cover;
     background-position: center;
     color: white;
     text-align: center;
-    padding: 120px 20px;
+    padding: 160px 20px;
 }
 
 .hero h1{
-    font-size:60px;
+    font-size:65px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
 }
 
 .hero p{
-    font-size:20px;
+    font-size:22px;
     margin:20px 0;
+    color: #d1d1d1;
+    letter-spacing: 1px;
 }
 
 .btn{
     display:inline-block;
-    background:#d4af37;
-    color:black;
-    padding:12px 25px;
+    background: #c5a059; /* Rich luxury gold */
+    color: #111;
+    padding: 14px 30px;
     text-decoration:none;
-    border-radius:5px;
-    font-weight:bold;
+    border-radius:4px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+}
+
+.btn:hover{
+    background: #d4af37;
 }
 
 section{
-    padding:70px 10%;
+    padding:80px 10%;
 }
 
 h2{
     text-align:center;
-    margin-bottom:30px;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin-bottom:40px;
+    color: #fff;
 }
 
 .about{
     text-align:center;
     max-width:800px;
     margin:auto;
+    font-size: 18px;
+    color: #bbb;
 }
 
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
 }
 
 .card{
-    border:1px solid #ddd;
-    border-radius:10px;
-    overflow:hidden;
-    background: white; /* Keeps the card background clean and consistent */
+    background: #181818; /* Rich card background */
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    border-color: #c5a059;
 }
 
 .card img{
     width:100%;
-    height:250px;
+    height:260px;
     object-fit:contain;
-    padding: 10px; /* Adds a small breathing room around the contained images */
+    background-color: #141414;
+    padding: 15px;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card-content h3{
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-content p{
+    color: #aaa;
+    font-size: 14px;
 }
 
 .why{
-    background:#f5f5f5;
+    background: #141414; /* Slight contrast section for features */
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
 }
 
 .features{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    gap:25px;
 }
 
 .feature{
-    background:white;
-    padding:20px;
-    border-radius:10px;
+    background: #1c1c1c;
+    padding: 30px 20px;
+    border-radius: 8px;
     text-align:center;
+    border: 1px solid #282828;
+}
+
+.feature h3{
+    color: #f4d06f;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.feature p{
+    color: #aaa;
+    font-size: 14px;
 }
 
 .contact{
     text-align:center;
+    background: #0f0f0f;
+}
+
+.contact p{
+    font-size: 18px;
+    margin: 10px 0;
+    color: #ccc;
 }
 
 .contact a {
-    color: #007bff;
+    color: #c5a059;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .contact a:hover {
@@ -134,9 +205,11 @@ h2{
 
 footer{
     background:#111;
-    color:white;
+    color:#888;
     text-align:center;
-    padding:20px;
+    padding:25px;
+    border-top: 1px solid #222;
+    font-size: 14px;
 }
 </style>
 
