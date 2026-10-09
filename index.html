@@ -200,37 +200,38 @@
             </div>
         </header>
 
-        <!-- EXTENDED HERO SECTION (CONTAINING HEADLINE & ABOUT TOCTION) -->
-        <section class="relative min-h-[750px] md:min-h-[880px] flex flex-col justify-between overflow-hidden bg-dark-900/90 pt-16 pb-20">
+        <!-- HERO SECTION -->
+        <section class="relative min-h-[580px] md:min-h-[680px] flex items-center justify-center overflow-hidden bg-dark-900/80">
             <img src="hero page.JPG" 
                  alt="TOCTION Hero Background" 
                  class="absolute inset-0 w-full h-full object-cover object-center opacity-40 scale-105 transition-transform duration-1000 ease-out hover:scale-100">
             
-            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/60 to-dark-900/80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/60 to-transparent"></div>
             
-            <!-- MAIN HERO CONTENT -->
-            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center my-auto">
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
                 <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
                     <span class="gold-gradient-text">Built for What's Next.</span>
                 </h1>
                 
-                <p class="text-gray-300 text-base md:text-xl font-light max-w-2xl mx-auto mb-8 leading-relaxed">
+                <p class="text-gray-300 text-base md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
                     Designed for modern executives, travelers, and style connoisseurs. High-grade materials fused with uncompromising functionality.
                 </p>
                 
-                <div class="flex items-center justify-center mb-16">
+                <div class="flex items-center justify-center">
                     <a href="#collection" class="btn-gold px-8 py-4 rounded-xl font-bold text-sm tracking-wider uppercase text-center flex items-center justify-center gap-3">
                         <span>Explore Collection</span>
                         <i class="fa-solid fa-bag-shopping"></i>
                     </a>
                 </div>
             </div>
+        </section>
 
-            <!-- ABOUT TOCTION (NESTED DIRECTLY INSIDE HERO BACKGROUND) -->
-            <div id="about" class="relative z-10 max-w-4xl mx-auto px-6 text-center pt-8 border-t border-gold-500/20">
-                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-wider mb-4">About <span class="gold-gradient-text">TOCTION</span></h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mb-6"></div>
-                <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-3xl mx-auto font-light">
+        <!-- ABOUT SECTION (MOVED OUTSIDE HERO TO DARK SECTION BELOW) -->
+        <section id="about" class="py-20 px-6 md:px-12 bg-dark-800/90 border-t border-gold-500/20">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-wider mb-6">About <span class="gold-gradient-text">TOCTION</span></h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mb-8"></div>
+                <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-3xl mx-auto font-light">
                     TOCTION represents the pinnacle of luxury carrying gear. Each piece is crafted using premium water-resistant textiles, genuine full-grain accents, and ultra-durable hardware. Engineered specifically for dynamic professionals, global travelers, and daily commuters who settle for nothing less than extraordinary.
                 </p>
             </div>
@@ -400,4 +401,196 @@
             </button>
             
             <div class="flex flex-col md:flex-row gap-6 items-center">
-                <img id="modal-img
+                <img id="modal-img" src="" alt="Product Detail" class="w-full md:w-1/2 h-64 object-contain rounded-2xl border border-dark-500 product-img-box p-2">
+                <div class="w-full md:w-1/2 flex flex-col justify-between">
+                    <div>
+                        <span id="modal-price" class="text-gold-400 font-bold text-xl block mb-1"></span>
+                        <h3 id="modal-title" class="text-2xl font-bold text-white mb-3"></h3>
+                        <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-6"></p>
+                    </div>
+                    <a id="modal-wa-btn" href="#" target="_blank" class="btn-gold py-3.5 px-6 rounded-xl font-bold text-xs uppercase tracking-wider w-full flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Order via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POLICY & WARRANTY MODAL -->
+    <div id="policy-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <div class="bg-dark-800 border border-dark-500 rounded-3xl max-w-lg w-full p-6 md:p-8 relative shadow-2xl scale-95 transition-transform duration-300" id="policy-modal-container">
+            <button onclick="closePolicyModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-600 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-left">
+                <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4" id="policy-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 id="policy-title" class="text-2xl font-bold text-white mb-4 brand-font"></h3>
+                <div id="policy-content" class="text-gray-300 text-sm leading-relaxed space-y-3 mb-6"></div>
+                <button onclick="closePolicyModal()" class="btn-gold py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-wider w-full text-center">
+                    Got It
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        function removeWhiteBackground(imgElementId, canvasElementId) {
+            const img = document.getElementById(imgElementId);
+            const canvas = document.getElementById(canvasElementId);
+            
+            if (!img || !canvas) return;
+
+            const processImage = () => {
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.naturalWidth || img.width;
+                canvas.height = img.naturalHeight || img.height;
+
+                if (canvas.width === 0 || canvas.height === 0) return;
+
+                ctx.drawImage(img, 0, 0);
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const data = imageData.data;
+
+                for (let i = 0; i < data.length; i += 4) {
+                    const r = data[i];
+                    const g = data[i + 1];
+                    const b = data[i + 2];
+
+                    if (r > 230 && g > 230 && b > 230) {
+                        data[i + 3] = 0;
+                    }
+                }
+
+                ctx.putImageData(imageData, 0, 0);
+                img.src = canvas.toDataURL('image/png');
+            };
+
+            if (img.complete && img.naturalWidth !== 0) {
+                processImage();
+            } else {
+                img.onload = processImage;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            removeWhiteBackground('img-pd-1', 'canvas-pd-1');
+            removeWhiteBackground('img-pd-2', 'canvas-pd-2');
+            removeWhiteBackground('img-pd-3', 'canvas-pd-3');
+        });
+
+        function setDeviceView(mode) {
+            const body = document.body;
+            const btnAuto = document.getElementById('btn-mode-auto');
+            const btnDesktop = document.getElementById('btn-mode-desktop');
+            const btnMobile = document.getElementById('btn-mode-mobile');
+
+            body.classList.remove('mode-auto', 'mode-desktop', 'mode-mobile');
+            body.classList.add(`mode-${mode}`);
+
+            [btnAuto, btnDesktop, btnMobile].forEach(btn => {
+                btn.className = "view-btn px-2.5 py-1.5 rounded-lg font-semibold text-gray-400 hover:text-white flex items-center gap-1.5 transition-all";
+            });
+
+            let activeBtn = btnAuto;
+            if (mode === 'desktop') activeBtn = btnDesktop;
+            if (mode === 'mobile') activeBtn = btnMobile;
+
+            activeBtn.className = "view-btn px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all bg-gold-500 text-dark-900 shadow";
+        }
+
+        function openModal(title, image, desc, price) {
+            const modal = document.getElementById('product-modal');
+            const container = document.getElementById('modal-container');
+            
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-img').src = image;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-price').innerText = price;
+
+            const waMessage = encodeURIComponent(`Hello TOCTION Team, I would like to order the ${title} (${price}).`);
+            document.getElementById('modal-wa-btn').href = `https://wa.me/918089576393?text=${waMessage}`;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('product-modal');
+            const container = document.getElementById('modal-container');
+
+            modal.classList.add('opacity-0');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function openPolicyModal(type) {
+            const modal = document.getElementById('policy-modal');
+            const container = document.getElementById('policy-modal-container');
+            const title = document.getElementById('policy-title');
+            const content = document.getElementById('policy-content');
+            const icon = document.getElementById('policy-icon');
+
+            if (type === 'return') {
+                icon.innerHTML = '<i class="fa-solid fa-rotate-left"></i>';
+                title.innerText = 'Return & Refund Policy';
+                content.innerHTML = `
+                    <p>At <strong>TOCTION</strong>, customer satisfaction is paramount. We offer a <strong>7-Day Hassle-Free Return Policy</strong> for unused products in their original packaging.</p>
+                    <p>&bull; <strong>Eligibility:</strong> Items must be in original condition with tags intact.</p>
+                    <p>&bull; <strong>Refunds:</strong> Processed within 3-5 business days after inspection upon receipt.</p>
+                    <p>&bull; <strong>Initiate Return:</strong> Simply reach out to support at <a href="mailto:info@toction.com" class="text-gold-400 underline">info@toction.com</a> or via WhatsApp.</p>
+                `;
+            } else if (type === 'warranty') {
+                icon.innerHTML = '<i class="fa-solid fa-shield-halved"></i>';
+                title.innerText = 'TOCTION Warranty Coverage';
+                content.innerHTML = `
+                    <p>Every <strong>TOCTION</strong> piece comes with a <strong>1-Year Limited Craftsman Warranty</strong> covering manufacturing defects in materials and workmanship.</p>
+                    <p>&bull; <strong>Covered:</strong> Zippers, hardware fittings, stitching, and shoulder strap attachments.</p>
+                    <p>&bull; <strong>Not Covered:</strong> Standard wear and tear, accidents, chemical spills, or unauthorized alterations.</p>
+                    <p>&bull; <strong>Claims:</strong> Contact our team via WhatsApp or email with your proof of purchase and photographs.</p>
+                `;
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closePolicyModal() {
+            const modal = document.getElementById('policy-modal');
+            const container = document.getElementById('policy-modal-container');
+
+            modal.classList.add('opacity-0');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        document.getElementById('product-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.getElementById('policy-modal').addEventListener('click', function(e) {
+            if (e.target === this) closePolicyModal();
+        });
+    </script>
+</body>
+</html>
