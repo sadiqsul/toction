@@ -350,7 +350,7 @@
                     <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
                 </div>
 
-                <!-- CONTACT CARDS (BALANCED GRID) -->
+                <!-- CONTACT CARDS -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- WHATSAPP CARD -->
                     <div class="p-8 bg-dark-700 rounded-2xl border border-dark-500/80 flex flex-col items-center text-center hover:border-gold-500/50 transition-all shadow-lg">
@@ -381,14 +381,13 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="bg-dark-900 py-8 px-6 text-center text-xs text-gray-400">
+        <!-- FOOTER (UPDATED WITH RETURN & REFUND POLICY AND WARRANTY LINKS) -->
+        <footer class="bg-dark-900 py-8 px-6 text-center text-xs text-gray-400 border-t border-dark-500/30">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p>&copy; 2026 TOCTION. All Rights Reserved.</p>
-                <div class="flex items-center space-x-6 text-gray-400">
-                    <a href="#about" class="hover:text-gold-400 transition-colors">About</a>
-                    <a href="#collection" class="hover:text-gold-400 transition-colors">Collection</a>
-                    <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+                <div class="flex items-center space-x-6 text-gray-400 font-medium">
+                    <button onclick="openPolicyModal('return')" class="hover:text-gold-400 transition-colors cursor-pointer">Return & Refund Policy</button>
+                    <button onclick="openPolicyModal('warranty')" class="hover:text-gold-400 transition-colors cursor-pointer">Warranty</button>
                 </div>
             </div>
         </footer>
@@ -415,6 +414,26 @@
                         <span>Order via WhatsApp</span>
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POLICY & WARRANTY MODAL -->
+    <div id="policy-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <div class="bg-dark-800 border border-dark-500 rounded-3xl max-w-lg w-full p-6 md:p-8 relative shadow-2xl scale-95 transition-transform duration-300" id="policy-modal-container">
+            <button onclick="closePolicyModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-600 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-left">
+                <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4" id="policy-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 id="policy-title" class="text-2xl font-bold text-white mb-4 brand-font"></h3>
+                <div id="policy-content" class="text-gray-300 text-sm leading-relaxed space-y-3 mb-6"></div>
+                <button onclick="closePolicyModal()" class="btn-gold py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-wider w-full text-center">
+                    Got It
+                </button>
             </div>
         </div>
     </div>
@@ -471,8 +490,60 @@
             }, 300);
         }
 
+        function openPolicyModal(type) {
+            const modal = document.getElementById('policy-modal');
+            const container = document.getElementById('policy-modal-container');
+            const title = document.getElementById('policy-title');
+            const content = document.getElementById('policy-content');
+            const icon = document.getElementById('policy-icon');
+
+            if (type === 'return') {
+                icon.innerHTML = '<i class="fa-solid fa-rotate-left"></i>';
+                title.innerText = 'Return & Refund Policy';
+                content.innerHTML = `
+                    <p>At <strong>TOCTION</strong>, customer satisfaction is paramount. We offer a <strong>7-Day Hassle-Free Return Policy</strong> for unused products in their original packaging.</p>
+                    <p>&bull; <strong>Eligibility:</strong> Items must be in original condition with tags intact.</p>
+                    <p>&bull; <strong>Refunds:</strong> Processed within 3-5 business days after inspection upon receipt.</p>
+                    <p>&bull; <strong>Initiate Return:</strong> Simply reach out to support at <a href="mailto:info@toction.com" class="text-gold-400 underline">info@toction.com</a> or via WhatsApp.</p>
+                `;
+            } else if (type === 'warranty') {
+                icon.innerHTML = '<i class="fa-solid fa-shield-halved"></i>';
+                title.innerText = 'TOCTION Warranty Coverage';
+                content.innerHTML = `
+                    <p>Every <strong>TOCTION</strong> piece comes with a <strong>1-Year Limited Craftsman Warranty</strong> covering manufacturing defects in materials and workmanship.</p>
+                    <p>&bull; <strong>Covered:</strong> Zippers, hardware fittings, stitching, and shoulder strap attachments.</p>
+                    <p>&bull; <strong>Not Covered:</strong> Standard wear and tear, accidents, chemical spills, or unauthorized alterations.</p>
+                    <p>&bull; <strong>Claims:</strong> Contact our team via WhatsApp or email with your proof of purchase and photographs.</p>
+                `;
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closePolicyModal() {
+            const modal = document.getElementById('policy-modal');
+            const container = document.getElementById('policy-modal-container');
+
+            modal.classList.add('opacity-0');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
         document.getElementById('product-modal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
+        });
+
+        document.getElementById('policy-modal').addEventListener('click', function(e) {
+            if (e.target === this) closePolicyModal();
         });
     </script>
 </body>
