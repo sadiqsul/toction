@@ -23,17 +23,17 @@
                 extend: {
                     colors: {
                         gold: {
-                            400: '#f3e5ab',
-                            500: '#c5a059',
-                            600: '#9e7a37',
-                            700: '#785a21',
+                            400: 'var(--gold-400, #f3e5ab)',
+                            500: 'var(--gold-500, #c5a059)',
+                            600: 'var(--gold-600, #9e7a37)',
+                            700: 'var(--gold-700, #785a21)',
                         },
                         dark: {
-                            900: '#070b19',
-                            800: '#0c1226',
-                            700: '#0e1732',
-                            600: '#141c38',
-                            500: '#232f54',
+                            900: 'var(--bg-900, #070b19)',
+                            800: 'var(--bg-800, #0c1226)',
+                            700: 'var(--bg-700, #141c38)',
+                            600: 'var(--bg-600, #1e294a)',
+                            500: 'var(--bg-500, #2d3b66)',
                         }
                     },
                     fontFamily: {
@@ -45,13 +45,21 @@
         }
     </script>
 
+    <!-- Custom CSS Styles -->
     <style>
-        :root {
+        :root, body {
             --bg-body: #070b19;
-            --bg-card: #0c1226;
-            --bg-img-box: #0e1732;
+            --bg-900: #070b19;
+            --bg-800: #0c1226;
+            --bg-700: #141c38;
+            --bg-600: #1e294a;
+            --bg-500: #2d3b66;
+            --text-color: #e2e8f0;
+            --gold-400: #f3e5ab;
             --gold-500: #c5a059;
-            --mesh-bg: radial-gradient(ellipse at top, #111a33 0%, #070b19 85%);
+            --gold-600: #9e7a37;
+            --gold-700: #785a21;
+            --mesh-bg: radial-gradient(ellipse at top, #111a33 0%, #070b19 80%);
         }
 
         body {
@@ -59,7 +67,7 @@
             background-color: var(--bg-body);
             background-image: var(--mesh-bg);
             background-attachment: fixed;
-            color: #e2e8f0;
+            color: var(--text-color);
             overflow-x: hidden;
             transition: all 0.4s ease;
         }
@@ -69,24 +77,23 @@
         }
 
         .gold-gradient-text {
-            background: linear-gradient(135deg, #f3e5ab 0%, #c5a059 50%, #9e7a37 100%);
+            background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 50%, var(--gold-600) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .btn-gold {
-            background: linear-gradient(135deg, #f3e5ab 0%, #c5a059 50%, #9e7a37 100%);
+            background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 50%, var(--gold-600) 100%);
             color: #070b19;
             box-shadow: 0 4px 20px rgba(197, 160, 89, 0.25);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
         }
 
         .btn-gold:hover {
-            box-shadow: 0 6px 25px rgba(197, 160, 89, 0.45);
+            box-shadow: 0 6px 25px rgba(197, 160, 89, 0.4);
             transform: translateY(-2px);
         }
 
-        /* Viewport Mode Custom Styles */
         #viewport-wrapper {
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             margin: 0 auto;
@@ -98,16 +105,16 @@
             margin: 30px auto;
             border-radius: 40px;
             border: 12px solid #141c38;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
             overflow: hidden;
         }
 
         body.mode-desktop #viewport-wrapper {
             max-width: 1280px;
             margin: 20px auto;
-            border-radius: 16px;
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
             overflow: hidden;
         }
 
@@ -119,32 +126,20 @@
             box-shadow: none;
         }
 
-        /* Product Display Custom Styles: Ultra High Clarity & Original Natural Color */
         .product-card {
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(197, 160, 89, 0.6);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.5), 0 0 25px rgba(197, 160, 89, 0.2);
-        }
-
-        /* Crisp product rendering - crisp, untouched original color */
-        .clear-product-img {
-            mix-blend-mode: normal;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .product-card:hover .clear-product-img {
-            transform: scale(1.06);
+            border-color: var(--gold-500);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4), 0 0 20px rgba(197, 160, 89, 0.2);
         }
 
         .glass-nav {
-            background: rgba(12, 18, 38, 0.9);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(12, 18, 38, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
     </style>
 </head>
@@ -153,15 +148,14 @@
     <div id="viewport-wrapper" class="w-full flex-grow flex flex-col bg-dark-800 transition-colors duration-500">
 
         <!-- HEADER / NAVIGATION -->
-        <header class="sticky top-0 z-50 glass-nav px-4 md:px-8 py-4 border-b border-dark-600/60">
+        <header class="sticky top-0 z-50 glass-nav px-4 md:px-8 py-4 transition-all">
             <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
                 
-                <!-- BRAND LOGO -->
+                <!-- LOGO WITH GOLD MATCHING FILTERS -->
                 <a href="#" class="flex items-center gap-3 group">
                     <img src="logo.jpg" 
                          alt="TOCTION Logo" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/120x120/0c1226/c5a059?text=TOCTION';"
-                         class="h-11 w-auto rounded-lg object-contain border border-gold-500/30 transition-all duration-300 group-hover:scale-105 shadow-md">
+                         class="h-12 w-auto rounded-lg object-contain border border-gold-500/30 transition-all duration-300 group-hover:scale-105 shadow-md brightness-125 contrast-125 sepia-[0.3]">
                     
                     <div>
                         <span class="brand-font text-2xl font-bold tracking-widest text-white block leading-none">TOCTION</span>
@@ -177,8 +171,7 @@
                         <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
                     </nav>
 
-                    <!-- Responsive Viewport Mode Buttons -->
-                    <div class="relative bg-dark-900/90 p-1 rounded-xl border border-dark-600 flex items-center gap-1 shadow-inner text-xs">
+                    <div class="relative bg-dark-600/90 p-1 rounded-xl border border-dark-500 flex items-center gap-1 shadow-inner text-xs">
                         <button id="btn-mode-auto" onclick="setDeviceView('auto')" class="view-btn px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all bg-gold-500 text-dark-900 shadow">
                             <i class="fa-solid fa-expand text-xs"></i>
                             <span class="hidden sm:inline">Auto</span>
@@ -204,16 +197,14 @@
         </header>
 
         <!-- HERO SECTION -->
-        <section class="relative min-h-[560px] md:min-h-[620px] flex items-center justify-center overflow-hidden bg-dark-900">
+        <section class="relative min-h-[580px] md:min-h-[680px] flex items-center justify-center overflow-hidden bg-dark-900/80">
             <img src="hero page.JPG" 
-                 alt="TOCTION Luxury Laptop Bag" 
-                 onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/070b19/c5a059?text=TOCTION+Luxury+Collection';"
+                 alt="TOCTION Hero Background" 
                  class="absolute inset-0 w-full h-full object-cover object-center opacity-40 scale-105 transition-transform duration-1000 ease-out hover:scale-100">
             
             <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/60 to-transparent"></div>
             
             <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                <span class="text-gold-500 font-semibold text-xs uppercase tracking-[0.3em] mb-4 block">Executive & Travel Gear</span>
                 <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
                     <span class="gold-gradient-text">Built for What's Next.</span>
                 </h1>
@@ -222,7 +213,7 @@
                     Designed for modern executives, travelers, and style connoisseurs. High-grade materials fused with uncompromising functionality.
                 </p>
                 
-                <div class="flex items-center justify-center gap-4">
+                <div class="flex items-center justify-center">
                     <a href="#collection" class="btn-gold px-8 py-4 rounded-xl font-bold text-sm tracking-wider uppercase text-center flex items-center justify-center gap-3">
                         <span>Explore Collection</span>
                         <i class="fa-solid fa-bag-shopping"></i>
@@ -232,7 +223,7 @@
         </section>
 
         <!-- ABOUT SECTION -->
-        <section id="about" class="py-20 px-6 md:px-12 bg-dark-800 border-t border-dark-600/40">
+        <section id="about" class="py-20 px-6 md:px-12 bg-dark-800/90">
             <div class="max-w-5xl mx-auto text-center">
                 <h2 class="text-2xl md:text-4xl font-bold text-white tracking-wider mb-6">About <span class="gold-gradient-text">TOCTION</span></h2>
                 <div class="w-16 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mb-8"></div>
@@ -243,7 +234,7 @@
         </section>
 
         <!-- COLLECTION SECTION -->
-        <section id="collection" class="py-20 px-6 md:px-12 bg-dark-900 border-t border-gold-500/20">
+        <section id="collection" class="py-20 px-6 md:px-12 bg-dark-900/80 border-t border-gold-500/20">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
                     <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest block mb-2">Curated Masterpieces</span>
@@ -255,29 +246,27 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
                     <!-- Product Card 1 -->
-                    <div class="product-card bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden group flex flex-col shadow-xl">
-                        <!-- High Contrast Navy Image Container -->
-                        <div class="relative h-80 bg-dark-700 border-b border-dark-600/80 p-6 flex items-center justify-center overflow-hidden">
-                            <span class="absolute top-4 left-4 z-20 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
+                        <div class="relative h-72 bg-dark-800 overflow-hidden flex items-center justify-center p-4">
+                            <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                                 Flagship
                             </span>
                             <img src="PD-1.JPG" 
                                  alt="Executive Laptop Bag" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/0e1732/c5a059?text=Executive+Laptop+Bag';"
-                                 class="clear-product-img max-h-full max-w-full object-contain z-10">
+                                 class="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between bg-dark-800">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Executive Laptop Bag</h3>
-                                    <span class="text-gold-400 font-bold text-lg">$249</span>
+                                    <span class="text-gold-400 font-bold">$249</span>
                                 </div>
                                 <p class="text-gray-400 text-sm mb-6 leading-relaxed">
                                     Designed for modern professionals with padded 16-inch laptop sleeves, RFID blocking pockets, and sleek water-resistant canvas.
                                 </p>
                             </div>
                             <button onclick="openModal('Executive Laptop Bag', 'PD-1.JPG', 'Designed for modern executives featuring impact-resistant cushioning, dedicated compartments for tech peripherals, magnetic quick-access pockets, and premium YKK zippers.', '$249')" 
-                                    class="w-full py-3.5 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200 shadow-md">
+                                    class="w-full py-3 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200">
                                 <span>Quick View Details</span>
                                 <i class="fa-solid fa-circle-info"></i>
                             </button>
@@ -285,29 +274,27 @@
                     </div>
 
                     <!-- Product Card 2 -->
-                    <div class="product-card bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden group flex flex-col shadow-xl">
-                        <!-- High Contrast Navy Image Container -->
-                        <div class="relative h-80 bg-dark-700 border-b border-dark-600/80 p-6 flex items-center justify-center overflow-hidden">
-                            <span class="absolute top-4 left-4 z-20 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
+                        <div class="relative h-72 bg-dark-800 overflow-hidden flex items-center justify-center p-4">
+                            <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                                 Best Seller
                             </span>
                             <img src="PD-2.JPG" 
                                  alt="Travel Backpack" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/0e1732/c5a059?text=Travel+Backpack';"
-                                 class="clear-product-img max-h-full max-w-full object-contain z-10">
+                                 class="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between bg-dark-800">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Travel Backpack</h3>
-                                    <span class="text-gold-400 font-bold text-lg">$299</span>
+                                    <span class="text-gold-400 font-bold">$299</span>
                                 </div>
                                 <p class="text-gray-400 text-sm mb-6 leading-relaxed">
                                     Smart expandable storage with ergonomic air-mesh shoulder straps and integrated USB pass-through charging.
                                 </p>
                             </div>
                             <button onclick="openModal('Travel Backpack', 'PD-2.JPG', 'Built for global jetsetters. Expands by 35% for weekend trips, features luggage pass-through straps, secret anti-theft back pockets, and weatherproof construction.', '$299')" 
-                                    class="w-full py-3.5 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200 shadow-md">
+                                    class="w-full py-3 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200">
                                 <span>Quick View Details</span>
                                 <i class="fa-solid fa-circle-info"></i>
                             </button>
@@ -315,29 +302,27 @@
                     </div>
 
                     <!-- Product Card 3 -->
-                    <div class="product-card bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden group flex flex-col shadow-xl">
-                        <!-- High Contrast Navy Image Container -->
-                        <div class="relative h-80 bg-dark-700 border-b border-dark-600/80 p-6 flex items-center justify-center overflow-hidden">
-                            <span class="absolute top-4 left-4 z-20 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
+                        <div class="relative h-72 bg-dark-800 overflow-hidden flex items-center justify-center p-4">
+                            <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                                 New Arrival
                             </span>
                             <img src="PD-3.jpeg" 
                                  alt="Business Duffle" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/0e1732/c5a059?text=Business+Duffle';"
-                                 class="clear-product-img max-h-full max-w-full object-contain z-10">
+                                 class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between bg-dark-800">
+                        <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Business Duffle</h3>
-                                    <span class="text-gold-400 font-bold text-lg">$320</span>
+                                    <span class="text-gold-400 font-bold">$320</span>
                                 </div>
                                 <p class="text-gray-400 text-sm mb-6 leading-relaxed">
                                     Versatile weekender duffle combining full-grain leather trim with sleek tactical aesthetic.
                                 </p>
                             </div>
                             <button onclick="openModal('Business Duffle', 'PD-3.jpeg', 'The ultimate companion for business trips and luxury weekend getaways. Includes a ventilated shoe compartment, garment organization sleeve, and detachable padded strap.', '$320')" 
-                                    class="w-full py-3.5 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200 shadow-md">
+                                    class="w-full py-3 rounded-xl bg-dark-600 hover:bg-gold-500 hover:text-dark-900 border border-dark-500 hover:border-gold-500 font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 text-gray-200">
                                 <span>Quick View Details</span>
                                 <i class="fa-solid fa-circle-info"></i>
                             </button>
@@ -349,7 +334,7 @@
         </section>
 
         <!-- CONTACT US SECTION -->
-        <section id="contact" class="py-20 px-6 md:px-12 bg-dark-800 border-t border-gold-500/20">
+        <section id="contact" class="py-20 px-6 md:px-12 bg-dark-800/90 border-t border-gold-500/20">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-16">
                     <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest block mb-2">Get In Touch</span>
@@ -357,23 +342,23 @@
                     <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
                 </div>
 
-                <!-- Contact Grid -->
+                <!-- CONTACT CARDS -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- WhatsApp Card -->
-                    <div class="p-8 bg-dark-700/90 rounded-2xl border border-dark-600 flex flex-col items-center text-center hover:border-gold-500/50 transition-all shadow-xl">
+                    <!-- WHATSAPP CARD -->
+                    <div class="p-8 bg-dark-700 rounded-2xl border border-dark-500/80 flex flex-col items-center text-center hover:border-gold-500/50 transition-all shadow-lg">
                         <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-3xl mb-4">
                             <i class="fa-brands fa-whatsapp"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">WhatsApp Support</h3>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">Instant assistance for inquiries, customization & orders</p>
-                        <a href="https://wa.me/918089576393?text=Hi%20TOCTION" target="_blank" rel="noopener noreferrer" class="btn-gold py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-wider inline-flex items-center gap-2">
+                        <a href="https://wa.me/918089576393?text=Hi%20TOCTION" target="_blank" class="btn-gold py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-wider inline-flex items-center gap-2">
                             <span>Click to Chat on WhatsApp</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                         </a>
                     </div>
 
-                    <!-- Email Card -->
-                    <div class="p-8 bg-dark-700/90 rounded-2xl border border-dark-600 flex flex-col items-center text-center hover:border-gold-500/50 transition-all shadow-xl">
+                    <!-- EMAIL CARD -->
+                    <div class="p-8 bg-dark-700 rounded-2xl border border-dark-500/80 flex flex-col items-center text-center hover:border-gold-500/50 transition-all shadow-lg">
                         <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-3xl mb-4">
                             <i class="fa-regular fa-envelope"></i>
                         </div>
@@ -389,12 +374,12 @@
         </section>
 
         <!-- FOOTER -->
-        <footer class="bg-dark-900 py-8 px-6 text-center text-xs text-gray-400 border-t border-dark-600/50">
+        <footer class="bg-dark-900 py-8 px-6 text-center text-xs text-gray-400 border-t border-dark-500/30">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p>&copy; 2026 TOCTION. All Rights Reserved.</p>
                 <div class="flex items-center space-x-6 text-gray-400 font-medium">
-                    <button onclick="openPolicyModal('return')" class="hover:text-gold-400 transition-colors cursor-pointer focus:outline-none">Return & Refund Policy</button>
-                    <button onclick="openPolicyModal('warranty')" class="hover:text-gold-400 transition-colors cursor-pointer focus:outline-none">Warranty</button>
+                    <button onclick="openPolicyModal('return')" class="hover:text-gold-400 transition-colors cursor-pointer">Return & Refund Policy</button>
+                    <button onclick="openPolicyModal('warranty')" class="hover:text-gold-400 transition-colors cursor-pointer">Warranty</button>
                 </div>
             </div>
         </footer>
@@ -409,18 +394,14 @@
             </button>
             
             <div class="flex flex-col md:flex-row gap-6 items-center">
-                <div class="bg-dark-700 w-full md:w-1/2 h-64 rounded-2xl border border-dark-600 flex items-center justify-center p-4 overflow-hidden">
-                    <img id="modal-img" src="" alt="Product Detail" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x400/0e1732/c5a059?text=Product+Detail';"
-                         class="clear-product-img max-h-full max-w-full object-contain z-10">
-                </div>
+                <img id="modal-img" src="" alt="Product Detail" class="w-full md:w-1/2 h-64 object-contain rounded-2xl border border-dark-500 bg-dark-800 p-2">
                 <div class="w-full md:w-1/2 flex flex-col justify-between">
                     <div>
                         <span id="modal-price" class="text-gold-400 font-bold text-xl block mb-1"></span>
                         <h3 id="modal-title" class="text-2xl font-bold text-white mb-3"></h3>
                         <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-6"></p>
                     </div>
-                    <a id="modal-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-gold py-3.5 px-6 rounded-xl font-bold text-xs uppercase tracking-wider w-full flex items-center justify-center gap-2">
+                    <a id="modal-wa-btn" href="#" target="_blank" class="btn-gold py-3.5 px-6 rounded-xl font-bold text-xs uppercase tracking-wider w-full flex items-center justify-center gap-2">
                         <i class="fa-solid fa-bag-shopping"></i>
                         <span>Order via WhatsApp</span>
                     </a>
@@ -449,8 +430,8 @@
         </div>
     </div>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Viewport Switcher Handler
         function setDeviceView(mode) {
             const body = document.body;
             const btnAuto = document.getElementById('btn-mode-auto');
@@ -471,20 +452,18 @@
             activeBtn.className = "view-btn px-2.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all bg-gold-500 text-dark-900 shadow";
         }
 
-        // Product Modal Functions
         function openModal(title, image, desc, price) {
             const modal = document.getElementById('product-modal');
             const container = document.getElementById('modal-container');
-            const whatsappBtn = document.getElementById('modal-whatsapp-btn');
             
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-img').src = image;
             document.getElementById('modal-desc').innerText = desc;
             document.getElementById('modal-price').innerText = price;
 
-            // Dynamically build pre-filled WhatsApp message URL
-            const whatsappMessage = encodeURIComponent(`Hello TOCTION Team, I would like to order the ${title} (${price}).`);
-            whatsappBtn.href = `https://wa.me/918089576393?text=${whatsappMessage}`;
+            // Clean pre-filled WhatsApp message format
+            const waMessage = encodeURIComponent(`Hello TOCTION Team, I would like to order the ${title} (${price}).`);
+            document.getElementById('modal-wa-btn').href = `https://wa.me/918089576393?text=${waMessage}`;
 
             modal.classList.remove('hidden');
             setTimeout(() => {
@@ -507,7 +486,6 @@
             }, 300);
         }
 
-        // Policy Modal Functions
         function openPolicyModal(type) {
             const modal = document.getElementById('policy-modal');
             const container = document.getElementById('policy-modal-container');
@@ -556,7 +534,6 @@
             }, 300);
         }
 
-        // Close Modals on Backdrop Click
         document.getElementById('product-modal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
