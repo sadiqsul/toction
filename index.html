@@ -392,7 +392,7 @@
 
                     <!-- EMAIL CARD -->
                     <div class="p-8 bg-dark-700 rounded-2xl border border-dark-500/80 flex flex-col items-center text-center hover:border-gold-500/50 transition-all shadow-lg">
-                        <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+                        <div class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-3xl mb-4">
                             <i class="fa-regular fa-envelope"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">Email Us</h3>
@@ -594,7 +594,8 @@
                     const g = data[i + 1];
                     const b = data[i + 2];
 
-                    if (r > 230 && g > 230 && b > 230) {
+                    // Increased threshold to capture soft white shadows/gradients under products
+                    if (r > 195 && g > 195 && b > 195) {
                         data[i + 3] = 0;
                     }
                 }
