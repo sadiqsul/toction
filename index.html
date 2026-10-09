@@ -142,10 +142,10 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* Removes white background from JPEG product images */
-        .remove-white-bg {
-            mix-blend-mode: multiply;
-            filter: brightness(1.1) contrast(1.2);
+        /* Seamless blending to absorb white JPG background into Navy Blue container */
+        .blend-navy-bg {
+            mix-blend-mode: screen;
+            filter: invert(1) hue-rotate(180deg) brightness(1.15) contrast(1.1);
         }
     </style>
 </head>
@@ -239,7 +239,7 @@
             </div>
         </section>
 
-        <!-- COLLECTION SECTION -->
+        <!-- COLLECTION SECTION (NAVY BLUE CONTAINERS FOR ALL PRODUCTS) -->
         <section id="collection" class="py-20 px-6 md:px-12 bg-dark-900/80 border-t border-gold-500/20">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
@@ -253,13 +253,13 @@
                     
                     <!-- Product Card 1 -->
                     <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
-                        <div class="relative h-72 bg-gray-100 overflow-hidden flex items-center justify-center p-3">
+                        <div class="relative h-72 bg-dark-800 overflow-hidden flex items-center justify-center p-4">
                             <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                                 Flagship
                             </span>
                             <img src="PD-1.JPG" 
                                  alt="Executive Laptop Bag" 
-                                 class="w-full h-full object-contain remove-white-bg rounded-lg group-hover:scale-105 transition-transform duration-500">
+                                 class="w-full h-full object-contain blend-navy-bg rounded-lg group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
@@ -281,13 +281,13 @@
 
                     <!-- Product Card 2 -->
                     <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
-                        <div class="relative h-72 bg-gray-100 overflow-hidden flex items-center justify-center p-3">
+                        <div class="relative h-72 bg-dark-800 overflow-hidden flex items-center justify-center p-4">
                             <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                                 Best Seller
                             </span>
                             <img src="PD-2.JPG" 
                                  alt="Travel Backpack" 
-                                 class="w-full h-full object-contain remove-white-bg rounded-lg group-hover:scale-105 transition-transform duration-500">
+                                 class="w-full h-full object-contain blend-navy-bg rounded-lg group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
@@ -309,13 +309,13 @@
 
                     <!-- Product Card 3 -->
                     <div class="product-card bg-dark-700 rounded-2xl border border-dark-500/80 overflow-hidden group flex flex-col">
-                        <div class="relative h-72 bg-gray-100 overflow-hidden flex items-center justify-center p-3">
+                        <div class="relative h-72 bg-dark-800 overflow-hidden flex items-center justify-center p-4">
                             <span class="absolute top-4 left-4 z-10 bg-gold-500/20 backdrop-blur-md border border-gold-500/40 text-gold-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                                 New Arrival
                             </span>
                             <img src="PD-3.jpeg" 
                                  alt="Business Duffle" 
-                                 class="w-full h-full object-contain remove-white-bg rounded-lg group-hover:scale-105 transition-transform duration-500">
+                                 class="w-full h-full object-contain blend-navy-bg rounded-lg group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
@@ -400,7 +400,7 @@
             </button>
             
             <div class="flex flex-col md:flex-row gap-6 items-center">
-                <img id="modal-img" src="" alt="Product Detail" class="w-full md:w-1/2 h-64 object-contain remove-white-bg rounded-2xl border border-dark-500 bg-gray-100 p-2">
+                <img id="modal-img" src="" alt="Product Detail" class="w-full md:w-1/2 h-64 object-contain blend-navy-bg rounded-2xl border border-dark-500 bg-dark-800 p-2">
                 <div class="w-full md:w-1/2 flex flex-col justify-between">
                     <div>
                         <span id="modal-price" class="text-gold-400 font-bold text-xl block mb-1"></span>
