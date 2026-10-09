@@ -407,6 +407,7 @@
                 <div class="flex items-center space-x-6 text-gray-400 font-medium">
                     <button onclick="openPolicyModal('return')" class="hover:text-gold-400 transition-colors cursor-pointer">Return & Refund Policy</button>
                     <button onclick="openPolicyModal('warranty')" class="hover:text-gold-400 transition-colors cursor-pointer">Warranty</button>
+                    <button onclick="openPolicyModal('privacy')" class="hover:text-gold-400 transition-colors cursor-pointer">Privacy Policy</button>
                 </div>
             </div>
         </footer>
@@ -457,17 +458,21 @@
 
     <!-- POLICY & WARRANTY MODAL -->
     <div id="policy-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
-        <div class="bg-dark-800 border border-dark-500 rounded-3xl max-w-lg w-full p-6 md:p-8 relative shadow-2xl scale-95 transition-transform duration-300" id="policy-modal-container">
-            <button onclick="closePolicyModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-600 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+        <div class="bg-dark-800 border border-dark-500 rounded-3xl max-w-2xl w-full p-6 md:p-8 relative shadow-2xl scale-95 transition-transform duration-300 max-h-[85vh] flex flex-col" id="policy-modal-container">
+            <button onclick="closePolicyModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-600 text-gray-400 hover:text-white flex items-center justify-center transition-colors z-20">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             
-            <div class="text-left">
-                <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4" id="policy-icon">
+            <div class="text-left flex-shrink-0 mb-4 pr-10">
+                <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-3" id="policy-icon">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
-                <h3 id="policy-title" class="text-2xl font-bold text-white mb-4 brand-font"></h3>
-                <div id="policy-content" class="text-gray-300 text-sm leading-relaxed space-y-3 mb-6"></div>
+                <h3 id="policy-title" class="text-2xl font-bold text-white brand-font"></h3>
+            </div>
+
+            <div id="policy-content" class="text-gray-300 text-sm leading-relaxed overflow-y-auto space-y-4 pr-2 mb-6 custom-scroll"></div>
+            
+            <div class="flex-shrink-0">
                 <button onclick="closePolicyModal()" class="btn-gold py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-wider w-full text-center">
                     Got It
                 </button>
@@ -673,6 +678,67 @@
                     <p>&bull; <strong>Covered:</strong> Zippers, hardware fittings, stitching, and shoulder strap attachments.</p>
                     <p>&bull; <strong>Not Covered:</strong> Standard wear and tear, accidents, chemical spills, or unauthorized alterations.</p>
                     <p>&bull; <strong>Claims:</strong> Contact our team via WhatsApp or email with your proof of purchase and photographs.</p>
+                `;
+            } else if (type === 'privacy') {
+                icon.innerHTML = '<i class="fa-solid fa-user-shield"></i>';
+                title.innerText = 'Privacy Policy';
+                content.innerHTML = `
+                    <p class="text-xs text-gold-400 font-semibold">Last Updated: October 2026</p>
+                    <p>Welcome to Toction. Your privacy is critically important to us. This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you visit and purchase from our e-commerce store in India, in accordance with the <strong>Information Technology Act, 2000 (IT Act)</strong>, the <strong>Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 (SPDI Rules)</strong>, and the <strong>Digital Personal Data Protection Act, 2023 (DPDP Act)</strong>.</p>
+                    <p>By accessing or using our website, you explicitly consent to the collection, storage, processing, and disclosure of your personal information as described in this policy.</p>
+                    
+                    <h4 class="text-white font-bold mt-3">1. Information We Collect</h4>
+                    <p>We collect personal data to provide a seamless shopping experience. This includes:</p>
+                    <p>&bull; <strong>Identity & Contact Data:</strong> Name, shipping address, billing address, email address, and phone number.</p>
+                    <p>&bull; <strong>Transaction Data:</strong> Details about payments to and from you, and other details of products you purchase from our website. We do NOT store your raw credit card, debit card, or net banking passwords. All payment transactions are processed securely through authorized third-party payment gateways.</p>
+                    <p>&bull; <strong>Technical Data:</strong> Internet Protocol (IP) address, login data, browser type and version, time zone setting, location data, and operating system details.</p>
+
+                    <h4 class="text-white font-bold mt-3">2. Legal Basis for Processing</h4>
+                    <p>Under Indian law, specifically the DPDP Act 2023, we process your personal data based on the following grounds:</p>
+                    <p>&bull; <strong>Consent:</strong> Your explicit, specific, unconditional, and revocable consent provided when registering or making a purchase.</p>
+                    <p>&bull; <strong>Legitimate Uses:</strong> For fulfilling orders, completing deliveries, preventing fraud, or complying with any legal obligations or court orders in India.</p>
+
+                    <h4 class="text-white font-bold mt-3">3. How We Use Your Information</h4>
+                    <p>We use the collected data to protect our platform and serve you better:</p>
+                    <p>&bull; To process, fulfill, and ship your orders for bags.</p>
+                    <p>&bull; To manage payments, fees, and collect/recover money owed to us.</p>
+                    <p>&bull; To notify you about changes to our terms, return windows, or privacy policies.</p>
+                    <p>&bull; To protect our website from fraudulent transactions, hacking, cyber-attacks, and unauthorized access.</p>
+
+                    <h4 class="text-white font-bold mt-3">4. Data Disclosure and Sharing</h4>
+                    <p>We do not sell, rent, or trade your personal data to third parties. We share your information only with trusted partners essential to operating our business:</p>
+                    <p>&bull; <strong>Logistics & Courier Partners:</strong> To ship and deliver your bag orders to your specified address within India.</p>
+                    <p>&bull; <strong>Payment Gateways:</strong> Secure third-party processors handling transaction verification.</p>
+                    <p>&bull; <strong>Regulatory Authorities:</strong> When demanded under applicable law or court order by Government of India agencies.</p>
+
+                    <h4 class="text-white font-bold mt-3">5. Data Retention</h4>
+                    <p>We will only retain your personal data for as long as necessary to fulfill the purposes we collected it for, including for the purposes of satisfying any legal, accounting, or reporting requirements.</p>
+
+                    <h4 class="text-white font-bold mt-3">6. Reasonable Security Practices</h4>
+                    <p>We implement commercial-grade physical, electronic, and managerial security practices commensurate with the nature of the data stored, complying strictly with Rule 8 of the Indian SPDI Rules, 2011, to protect your sensitive personal data from unauthorized access, alteration, or destruction.</p>
+
+                    <h4 class="text-white font-bold mt-3">7. Limitation of Liability & Third-Party Risks</h4>
+                    <p>While we deploy standard administrative and technological safeguards to defend your data, we cannot guarantee total immunity against malicious network penetrations. Toction explicitly disclaims liability for any loss, cyber-theft, or data exposure caused by system breaches on independent, integrated third-party platforms (such as external payment gateways or hosting providers) provided that we maintain standard statutory data security updates.</p>
+
+                    <h4 class="text-white font-bold mt-3">8. Indemnity</h4>
+                    <p>You agree to indemnify, defend, and hold harmless Toction and its operators against any claims, losses, or legal liabilities arising from your provision of inaccurate, fraudulent, or outdated delivery addresses, identity details, or unauthorized payment information.</p>
+
+                    <h4 class="text-white font-bold mt-3">9. Governing Law & Jurisdiction</h4>
+                    <p>This Privacy Policy and your relationship with Toction are governed entirely by the laws of the Republic of India. Any disputes, claims, or legal proceedings arising under this policy shall be subject exclusively to the jurisdiction of the competent courts located in <strong>Kerala, India</strong>.</p>
+
+                    <h4 class="text-white font-bold mt-3">10. Your Legal Rights (DPDP Act, 2023)</h4>
+                    <p>As a Data Principal in India, you hold the following rights:</p>
+                    <p>&bull; <strong>Right to Access:</strong> Request a summary of personal data being processed and the processing activities.</p>
+                    <p>&bull; <strong>Right to Correction and Erasure:</strong> Request rectification of inaccurate data or complete deletion of your data (subject to legal retentions).</p>
+                    <p>&bull; <strong>Right to Withdraw Consent:</strong> You may withdraw your consent for data processing at any time.</p>
+                    <p>&bull; <strong>Right to Grievance Redressal:</strong> You have the right to register a complaint with our Grievance Officer or the Data Protection Board of India.</p>
+
+                    <h4 class="text-white font-bold mt-3">11. Grievance Officer</h4>
+                    <p>In accordance with the Information Technology Act 2000 and the DPDP Act 2023, the name and contact details of the Grievance Officer are provided below:</p>
+                    <p>&bull; <strong>Designation:</strong> Grievance Officer / Support Lead</p>
+                    <p>&bull; <strong>Email:</strong> <a href="mailto:info@toction.com" class="text-gold-400 underline">info@toction.com</a></p>
+                    <p>&bull; <strong>Address:</strong> Kerala, India</p>
+                    <p>For any queries regarding this Privacy Policy or your data rights, please contact our Grievance Officer with the subject line "Privacy Request".</p>
                 `;
             }
 
