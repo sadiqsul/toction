@@ -367,6 +367,15 @@
                     <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest block mb-2">Get In Touch</span>
                     <h2 class="text-3xl md:text-5xl font-bold text-white tracking-wider">Contact Us</h2>
                     <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+                    
+                    <!-- POLICY LINKS PLACED ABOVE CONTACT CARDS -->
+                    <div class="flex flex-wrap items-center justify-center gap-6 mt-6 text-xs font-semibold uppercase tracking-wider text-gray-400">
+                        <button onclick="openPolicyModal('return')" class="hover:text-gold-400 transition-colors cursor-pointer">Return & Refund Policy</button>
+                        <span class="text-gold-500/40">•</span>
+                        <button onclick="openPolicyModal('warranty')" class="hover:text-gold-400 transition-colors cursor-pointer">Warranty</button>
+                        <span class="text-gold-500/40">•</span>
+                        <button onclick="openPolicyModal('privacy')" class="hover:text-gold-400 transition-colors cursor-pointer">Privacy Policy</button>
+                    </div>
                 </div>
 
                 <!-- CONTACT CARDS -->
@@ -404,11 +413,6 @@
         <footer class="bg-dark-900 py-8 px-6 text-center text-xs text-gray-400 border-t border-dark-500/30">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p>&copy; 2026 TOCTION. All Rights Reserved.</p>
-                <div class="flex items-center space-x-6 text-gray-400 font-medium">
-                    <button onclick="openPolicyModal('return')" class="hover:text-gold-400 transition-colors cursor-pointer">Return & Refund Policy</button>
-                    <button onclick="openPolicyModal('warranty')" class="hover:text-gold-400 transition-colors cursor-pointer">Warranty</button>
-                    <button onclick="openPolicyModal('privacy')" class="hover:text-gold-400 transition-colors cursor-pointer">Privacy Policy</button>
-                </div>
             </div>
         </footer>
 
@@ -683,7 +687,7 @@
                 icon.innerHTML = '<i class="fa-solid fa-user-shield"></i>';
                 title.innerText = 'Privacy Policy';
                 content.innerHTML = `
-                    <p class="text-xs text-gold-400 
+                    <p class="text-xs text-gold-400 font-semibold">Last Updated: October 2026</p>
                     <p>Welcome to Toction. Your privacy is critically important to us. This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you visit and purchase from our e-commerce store in India, in accordance with the <strong>Information Technology Act, 2000 (IT Act)</strong>, the <strong>Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 (SPDI Rules)</strong>, and the <strong>Digital Personal Data Protection Act, 2023 (DPDP Act)</strong>.</p>
                     <p>By accessing or using our website, you explicitly consent to the collection, storage, processing, and disclosure of your personal information as described in this policy.</p>
                     
