@@ -576,7 +576,7 @@
                 const data = imageData.data;
 
                 const isPD3 = imgElementId === 'img-pd-3';
-                const threshold = isPD3 ? 150 : 220;
+                const threshold = isPD3 ? 200 : 220;
 
                 for (let y = 0; y < canvas.height; y++) {
                     for (let x = 0; x < canvas.width; x++) {
@@ -586,9 +586,7 @@
                         const b = data[i + 2];
 
                         if (r > threshold && g > threshold && b > threshold) {
-                            if (!isPD3 || y > canvas.height * 0.35 || (x < canvas.width * 0.2 || x > canvas.width * 0.8)) {
-                                data[i + 3] = 0;
-                            }
+                            data[i + 3] = 0;
                         }
                     }
                 }
@@ -634,7 +632,7 @@
             const modal = document.getElementById('product-modal');
             
             resetZoom();
-            adjustZoom(0.5); // Pre-zoom slightly for optimal direct view
+            adjustZoom(0.5);
 
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-img').src = image;
