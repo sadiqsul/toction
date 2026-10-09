@@ -158,20 +158,18 @@
             pointer-events: none;
         }
 
-        /* Perfectly Centered Fullscreen Lightbox Mode */
-        #zoom-container.fullscreen-mode {
-            position: fixed !important;
-            inset: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            max-width: none !important;
-            z-index: 100 !important;
-            border-radius: 0 !important;
-            background: rgba(7, 11, 25, 0.96) !important;
-            border: none !important;
+        /* Centered Fullscreen Modal Mode */
+        #modal-container.fullscreen-mode {
+            max-width: 95vw !important;
+            width: 95vw !important;
+            height: 90vh !important;
+            max-height: 90vh !important;
             display: flex !important;
-            align-items: center !important;
+            flex-direction: column !important;
             justify-content: center !important;
+        }
+        #modal-container.fullscreen-mode #zoom-container {
+            height: 65vh !important;
         }
     </style>
 </head>
@@ -423,14 +421,14 @@
 
     <!-- PRODUCT QUICK VIEW MODAL -->
     <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
-        <div class="bg-dark-800 border border-dark-500 rounded-3xl max-w-2xl w-full p-6 md:p-8 relative shadow-2xl scale-95 transition-transform duration-300" id="modal-container">
+        <div class="bg-dark-800 border border-dark-500 rounded-3xl max-w-2xl w-full p-6 md:p-8 relative shadow-2xl scale-95 transition-all duration-300" id="modal-container">
             <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-600 text-gray-400 hover:text-white flex items-center justify-center transition-colors z-30">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             
             <div class="flex flex-col md:flex-row gap-6 items-center">
                 
-                <!-- ZOOM, DRAG & CENTERED FULLSCREEN CONTAINER -->
+                <!-- ZOOM, DRAG & CONTAINER -->
                 <div id="zoom-container" class="relative w-full md:w-1/2 h-72 rounded-2xl border border-dark-500 product-img-box p-2 overflow-hidden flex items-center justify-center">
                     <img id="modal-img" src="" alt="Product Detail" class="w-full h-full object-contain">
                     
@@ -496,6 +494,7 @@
         let startY = 0;
         let isFullscreen = false;
 
+        const modalContainer = document.getElementById('modal-container');
         const zoomContainer = document.getElementById('zoom-container');
         const modalImg = document.getElementById('modal-img');
         const fsIcon = document.getElementById('fs-icon');
@@ -523,11 +522,11 @@
         function toggleFullscreen() {
             isFullscreen = !isFullscreen;
             if (isFullscreen) {
-                zoomContainer.classList.add('fullscreen-mode');
+                modalContainer.classList.add('fullscreen-mode');
                 fsIcon.className = "fa-solid fa-compress";
-                adjustZoom(0.6);
+                adjustZoom(0.5);
             } else {
-                zoomContainer.classList.remove('fullscreen-mode');
+                modalContainer.classList.remove('fullscreen-mode');
                 fsIcon.className = "fa-solid fa-expand";
                 resetZoom();
             }
@@ -639,7 +638,6 @@
 
         function openModal(title, image, desc, price) {
             const modal = document.getElementById('product-modal');
-            const container = document.getElementById('modal-container');
             
             resetZoom();
             if (isFullscreen) toggleFullscreen();
@@ -655,20 +653,19 @@
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
-                container.classList.remove('scale-95');
-                container.classList.add('scale-100');
+                modalContainer.classList.remove('scale-95');
+                modalContainer.classList.add('scale-100');
             }, 10);
         }
 
         function closeModal() {
             const modal = document.getElementById('product-modal');
-            const container = document.getElementById('modal-container');
 
             if (isFullscreen) toggleFullscreen();
 
             modal.classList.add('opacity-0');
-            container.classList.remove('scale-100');
-            container.classList.add('scale-95');
+            modalContainer.classList.remove('scale-100');
+            modalContainer.classList.add('scale-95');
 
             setTimeout(() => {
                 modal.classList.add('hidden');
